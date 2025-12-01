@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetry Collection - Md Abu Salehin</title>
+    <meta name="description" content="A sanctuary of verses where emotions take form and thoughts find their voice. Poetry by Md Abu Salehin.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6a4c93;
+            --secondary-color: #8b5fbf;
+            --accent-color: #c06c84;
+            --bg-color: #0f0e17;
+            --text-color: #fffffe;
+            --text-muted: #a7a9be;
+            --card-bg: #1a1828;
+            --border-color: #2e2d3d;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, var(--bg-color) 0%, #1a1a2e 100%);
+            color: var(--text-color);
+            line-height: 1.8;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .moon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .author {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1rem;
+            border-left: 3px solid var(--primary-color);
+            background: rgba(106, 76, 147, 0.1);
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .welcome-text {
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .poem-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .poem-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .poem-card:hover {
+            transform: translateX(10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 24px rgba(106, 76, 147, 0.3);
+        }
+
+        .poem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .poem-card h3 a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .poem-card h3 a:hover {
+            color: var(--secondary-color);
+        }
+
+        .poem-subtitle {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .poem-description {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .poem-quote {
+            padding: 1rem;
+            border-left: 4px solid var(--primary-color);
+            background: rgba(106, 76, 147, 0.1);
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .about-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .license-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .license-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .license-list li::before {
+            position: absolute;
+            left: 0;
+        }
+
+        .contact-links {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .contact-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .support-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .support-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 2px solid var(--border-color);
+            margin-top: 4rem;
+            color: var(--text-muted);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            color: var(--text-muted);
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .moon {
+                font-size: 3rem;
+            }
+
+            .poem-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <header>
+            <div class="moon">🌙</div>
+            <h1>Poetry Collection</h1>
+            <div class="subtitle">Words from the Soul</div>
+            <div class="author">By Md Abu Salehin</div>
+            <div class="quote">
+                "Poetry is the word of soul,<br>
+                that can express a meaning beyond words"
+            </div>
+        </header>
+
+        <section>
+            <h2>✨ Welcome</h2>
+            <p class="welcome-text">
+                Welcome to my poetry collection—a sanctuary of verses where emotions take form and thoughts find their voice. Each poem here is a fragment of my inner world, crafted with vulnerability and honesty. I invite you to wander through these words, to feel what I felt, and perhaps discover something about yourself along the way.
+            </p>
+            <p class="welcome-text">
+                Poetry is not just about reading; it's about experiencing. Let these verses speak to you.
+            </p>
+        </section>
+
+        <section>
+            <h2>📚 Poems</h2>
+            
+            <div class="poem-card">
+                <h3>🧠 <a href="./the-thoughts-of-a-thought.html">The Thoughts of a Thought</a></h3>
+                <div class="poem-subtitle">A philosophical journey between the thought and the writer</div>
+                <p class="poem-description">
+                    Dive into a metaphysical dialogue exploring the eternal question: Hero or villain? This poem unravels the paradox of impossible choices and the realization that sometimes, we are simply overthinking what never truly matters.
+                </p>
+                <div class="poem-quote">
+                    "A thought is just a fiction. It's nothing to worry about."
+                </div>
+            </div>
+
+            <div class="poem-card">
+                <h3>🌊 <a href="./seas-of-past.html">Seas of Past</a></h3>
+                <div class="poem-subtitle">A reflection on time, age, and the ironic cycles of life</div>
+                <p class="poem-description">
+                    Travel through the seas of time—from old age to youth to childhood—and witness the beautiful irony of human desire. We spend our lives wanting what we don't have, never quite content with the present moment.
+                </p>
+                <div class="poem-quote">
+                    "The cycle of life is just like a joke that no one laughs at."
+                </div>
+            </div>
+
+            <div class="poem-card">
+                <h3>💫 <a href="./unknown-crimson.html">Unknown Crimson</a></h3>
+                <div class="poem-subtitle">A love poem to a muse never met, yet forever remembered</div>
+                <p class="poem-description">
+                    Under the crimson moon, love blooms for someone who exists beyond reality—a mysterious figure who lives in the mind and heart. This is a testament to the power of imagination and the beauty of loving the unknown.
+                </p>
+                <div class="poem-quote">
+                    "She was the one I never met, nor do I know her name."
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>🎭 About the Poet</h2>
+            <p class="welcome-text">
+                I am <strong>Md Abu Salehin</strong>, a writer who believes in the transformative power of poetry. Through my verses, I explore the complexities of human emotion, the absurdities of existence, and the quiet beauty of fleeting moments.
+            </p>
+            <p class="welcome-text">
+                Poetry, to me, is both a mirror and a window—a way to see myself more clearly while also offering others a glimpse into the universal experiences that connect us all.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>📜 License & Usage</h2>
+            <p class="welcome-text">
+                This collection is shared under the <strong>Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)</strong> license.
+            </p>
+            <p class="welcome-text"><strong>What this means:</strong></p>
+            <ul class="license-list">
+                <li>✅ <strong>You can read</strong> and enjoy these poems freely</li>
+                <li>✅ <strong>You can share</strong> links to this collection</li>
+                <li>✅ <strong>You must credit</strong> Md Abu Salehin as the author</li>
+                <li>🚫 <strong>You cannot</strong> use these poems commercially</li>
+                <li>🚫 <strong>You cannot</strong> print, publish, or reproduce them without permission</li>
+                <li>🚫 <strong>You cannot</strong> modify or create derivatives of these works</li>
+            </ul>
+            <p class="welcome-text">
+                <strong>In simple terms:</strong> These poems are here for you to read and share, but they remain my intellectual property. Enjoy them, share them, but please respect the creative work behind them.
+            </p>
+            <p class="welcome-text">
+                For the full legal text, see the <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" style="color: var(--secondary-color);">Creative Commons License</a>.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>💭 Reflections</h2>
+            <p class="welcome-text">
+                Poetry is a conversation between the writer and the reader. If any of these poems resonated with you, or if you have thoughts you'd like to share, I'd love to hear from you.
+            </p>
+            <h3 style="margin-top: 1.5rem; color: var(--secondary-color);">Connect with me:</h3>
+            <ul class="contact-links">
+                <li>🏢 Discord Username: <strong>gs_707</strong></li>
+                <li>🌐 Website: <a href="https://instagram.com/yourhandle" target="_blank">Md Abu Salehin</a></li>
+            </ul>
+        </section>
+
+        <section class="about-section">
+            <h2>🌟 Support This Work</h2>
+            <p class="welcome-text">
+                If you appreciate my poetry and would like to support my writing journey:
+            </p>
+            <ul class="support-list">
+                <li>⭐ <strong>Star this repository</strong> on GitHub</li>
+                <li>🔄 <strong>Share</strong> this collection with others who love poetry</li>
+                <li>☕ <strong>Buy me a coffee</strong> (coming soon)</li>
+            </ul>
+            <p class="welcome-text">
+                Your support means everything and helps me continue creating.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>🙏 Thank You</h2>
+            <p class="welcome-text">
+                Thank you for visiting my poetry collection. In a world that moves too fast, I hope these words gave you a moment to pause, reflect, and feel.
+            </p>
+            <p class="footer-quote">
+                Remember: <em>A thought is just a fiction. It's nothing to worry about. Just live your life, like you would have.</em>
+            </p>
+        </section>
+
+        <footer>
+            <p><strong>© 2025 Md Abu Salehin. All Rights Reserved.</strong></p>
+            <p><em>Last updated: December 2024</em></p>
+            <p style="margin-top: 1.5rem;">🌙 <em>More poems coming soon</em> 🌙</p>
+        </footer>
+    </div>
+
+    <script>
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 100;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 2 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        createStars();
+
+        // Smooth scroll animation on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.poem-card');
+            cards.forEach((card, index) => {
+                card.style.animation = `fadeIn 0.8s ease-out ${index * 0.2}s backwards`;
+            });
+        });
+    </script>
+</body>
+  </html>
