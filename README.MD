@@ -42,7 +42,7 @@ Feel free to explore, reflect, and share your thoughts.
 - ✅ **Quote** brief excerpts with proper attribution
 
 **Under the following conditions:**
-- 📝 **Attribution Required** — You must give appropriate credit to [Your Name] as the author, provide a link to this repository, and indicate if any changes were made
+- 📝 **Attribution Required** — You must give appropriate credit to Md Abu Salehin as the author, provide a link to this repository, and indicate if any changes were made
 - 🚫 **No Commercial Use** — You may not use these poems for commercial purposes, including but not limited to: printing in books or magazines, publishing in anthologies, using in paid courses, or any for-profit distribution
 - 🚫 **No Derivatives** — You may not remix, transform, modify, or build upon these poems
 - 🚫 **No Unauthorized Publication** — You may not print, press, publish, or reproduce these poems in any physical or digital format without explicit written permission from the author
