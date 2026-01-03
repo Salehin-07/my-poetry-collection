@@ -19,6 +19,7 @@ Click on any poem title to read the full piece:
 1. [The Thoughts of a Thought](./the-thoughts-of-a-thought.md)
 2. [Seas of Past](./seas-of-past.md)
 3. [Unknown Crimson](./unknown-crimson.md)
+4. [The Staircase of Wisdom](./the-staircase-of-wisdom.md)
 
 *More poems will be added as I continue writing and sharing my work.*
 
