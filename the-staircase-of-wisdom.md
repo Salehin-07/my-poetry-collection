@@ -32,7 +32,7 @@ Yet he stays humble.
 
 He respects everyone
 
-And gets the same from others
+And gets the same from others.
 
 <br>
 
@@ -46,7 +46,7 @@ There is for him to know
 
 Yet he claims he knows nothing.
 
-And that's true
+And that's true.
 
 <br>
 
@@ -71,6 +71,7 @@ That's why,
 I decided to never step on the staircase
 
 And stay on the ground.
+
 The ground that will never have pride.
 
 <br>
