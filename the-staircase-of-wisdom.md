@@ -70,7 +70,7 @@ That's why,
 
 I decided to never step on the staircase
 
-And stay on the ground.
+And stay on the ground,
 
 The ground that will never have pride.
 
