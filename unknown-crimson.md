@@ -12,7 +12,7 @@ I fell in love with her.
 
 The gradient glow she makes
 
-Is far greater than the mighty sun.
+Is far greater than the mighty sun's.
 
 <br>
 
