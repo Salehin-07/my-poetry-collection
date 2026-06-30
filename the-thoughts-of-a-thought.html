@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Thoughts of a Thought | Md Abu Salehin</title>
+    <meta name="description" content="A philosophical poem by Md Abu Salehin exploring the eternal question of hero or villain through a dreamlike dialogue.">
+    <link rel="icon" type="image/x-icon" href="./logo.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --hero: #e63946;
+            --villain: #1d3557;
+            --split: #f1faee;
+            --void: #0a0a0f;
+            --ghost: rgba(241, 250, 238, 0.1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--void);
+            color: var(--split);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Split Screen Effect */
+        .split-container {
+            position: fixed;
+            inset: 0;
+            display: flex;
+        }
+
+        .split-left {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(180deg, #1a0a0a 0%, var(--hero) 50%, #1a0a0a 100%);
+            opacity: 0.15;
+            transition: opacity 1s ease;
+        }
+
+        .split-right {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0f1a 0%, var(--villain) 50%, #0a0f1a 100%);
+            opacity: 0.15;
+            transition: opacity 1s ease;
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: float-particle 20s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 8rem 0 4rem;
+            position: relative;
+        }
+
+        . duality-symbol {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .hero-icon { color: var(--hero); animation: pulse-hero 3s infinite; }
+        .villain-icon { color: var(--villain); animation: pulse-villain 3s infinite; }
+
+        @keyframes pulse-hero {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes pulse-villain {
+            0%, 100% { opacity: 1; transform: scale(1.1); }
+            50% { opacity: 0.6; transform: scale(1); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.7;
+            color: var(--split);
+        }
+
+        /* The Question Box */
+        .question-box {
+            background: var(--ghost);
+            border: 1px solid rgba(241, 250, 238, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .question-box::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--hero), var(--villain), transparent);
+        }
+
+        .question-box p {
+            font-size: 1.4rem;
+            font-style: italic;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Poem Sections */
+        .poem-section {
+            padding: 2rem 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .poem-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .poem-section p {
+            font-size: 1.25rem;
+            line-height: 2.2;
+            white-space: pre-wrap;
+        }
+
+        /* The Dialogue */
+        .dialogue {
+            background: linear-gradient(135deg, rgba(30, 30, 40, 0.5), rgba(20, 20, 30, 0.5));
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--hero);
+        }
+
+        .dialogue.right {
+            border-left: none;
+            border-right: 4px solid var(--villain);
+        }
+
+        /* The Realization */
+        .realization {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            background: radial-gradient(circle, rgba(241, 250, 238, 0.05) 0%, transparent 70%);
+        }
+
+        .realization p {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 2;
+        }
+
+        .highlight {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--hero), var(--villain));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        /* The Ending */
+        .ending {
+            text-align: center;
+            padding: 4rem 0;
+            border-top: 1px solid rgba(241, 250, 238, 0.1);
+            margin-top: 4rem;
+        }
+
+        .ending p {
+            font-size: 1.3rem;
+            line-height: 2;
+            opacity: 0.8;
+        }
+
+        .ending .final-line {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            font-style: italic;
+            color: var(--split);
+        }
+
+        /* Back Link */
+        .back-link {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--split);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover { opacity: 1; }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--hero), var(--villain));
+            z-index: 1000;
+            transition: width 0.1s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content { padding: 2rem 1.5rem; }
+            .header { padding: 6rem 0 2rem; }
+            h1 { font-size: 2rem; }
+            .question-box { padding: 2rem; }
+            .poem-section p { font-size: 1.1rem; }
+            .back-link { top: 1rem; left: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="split-container">
+        <div class="split-left" id="splitLeft"></div>
+        <div class="split-right" id="splitRight"></div>
+    </div>
+    <div class="particles" id="particles"></div>
+
+    <a href="./index.html" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Collection
+    </a>
+
+    <div class="content">
+        <header class="header">
+            <div class="duality-symbol">
+                <span class="hero-icon">⚔️</span>
+                <span class="villain-icon">🛡️</span>
+            </div>
+            <h1>The Thoughts of a Thought</h1>
+            <p class="subtitle">A philosophical journey between the thought and the writer</p>
+            <p class="subtitle" style="margin-top: 0.5rem; font-size: 0.9rem;">By Md Abu Salehin</p>
+        </header>
+
+        <div class="question-box">
+            <p>A hero or a villain?<br>What you want to be?</p>
+        </div>
+
+        <section class="poem-section">
+            <p>I was on my own, sailing on my heart</p>
+            <p style="margin-top: 1.5rem;">Then suddenly, a voice came.</p>
+        </section>
+
+        <div class="dialogue">
+            <p>Saying that, "A hero or a villain?</p>
+            <p style="margin-top: 1rem;">What you want to be?"</p>
+        </div>
+
+        <section class="poem-section">
+            <p>Like others, I said, "The hero".</p>
+            <p style="margin-top: 1.5rem;">The voice again said,</p>
+        </section>
+
+        <div class="dialogue">
+            <p>"The hero who would kill his love to save the world?</p>
+            <p style="margin-top: 1rem;">Or,</p>
+            <p style="margin-top: 1rem;">The villain who could save his love and kill the whole world!"</p>
+        </div>
+
+        <section class="poem-section">
+            <p>The options were the same yet totally different.</p>
+            <p style="margin-top: 1rem;">I didn't know what to choose.</p>
+        </section>
+
+        <div class="realization">
+            <p>One side, my family and friends</p>
+            <p>Other side, the eight billion</p>
+        </div>
+
+        <section class="poem-section">
+            <p>A good person would hesitate</p>
+            <p>But will choose the latter.</p>
+            <p style="margin-top: 1rem;">A bad person wouldn't hesitate</p>
+            <p>And will also choose the latter.</p>
+            <p style="margin-top: 1.5rem;">I don't know what to call myself,</p>
+            <p>Good or bad?</p>
+        </section>
+
+        <section class="poem-section">
+            <p>I would choose the former.</p>
+            <p style="margin-top: 1.5rem;">The voice again said, "So, you choose the villain?</p>
+            <p style="margin-top: 1rem;">Know that the family and friends you saved,</p>
+            <p>"Will blame you for saving them</p>
+            <p>And will also curse you, if you have killed them."</p>
+        </section>
+
+        <section class="poem-section">
+            <p>The choices are still the same</p>
+            <p>But my answer is not.</p>
+            <p style="margin-top: 1.5rem;">I am confused and don't know what to do.</p>
+            <p style="margin-top: 1.5rem;">Then I asked, "Is there a better option?"</p>
+            <p>He said, "You know better."</p>
+        </section>
+
+        <div class="dialogue">
+            <p>The riddles were all easy yet I can't answer.</p>
+            <p style="margin-top: 1rem;">Like that time passed and passed.</p>
+            <p style="margin-top: 1rem;">I was still sailing and thinking.</p>
+            <p style="margin-top: 1rem;">I don't know what to choose.</p>
+        </div>
+
+        <section class="poem-section">
+            <p>Thinking like that, another eon passed by</p>
+            <p>Yet I was still just thinking.</p>
+        </section>
+
+        <section class="poem-section">
+            <p>At the end, I lose</p>
+            <p style="margin-top: 1rem;">I asked for the answer.</p>
+            <p style="margin-top: 1.5rem;">The voice came and said,</p>
+        </section>
+
+        <div class="dialogue">
+            <p>"First, tell me who am I?"</p>
+        </div>
+
+        <section class="poem-section">
+            <p>I also thought about that</p>
+            <p>But again failed.</p>
+        </section>
+
+        <div class="dialogue">
+            <p>He said, "I am the one</p>
+            <p style="margin-top: 0.5rem;">on whom you are sailing.</p>
+            <p style="margin-top: 0.5rem;">I am the thought,</p>
+            <p style="margin-top: 0.5rem;">You are thinking."</p>
+        </div>
+
+        <section class="poem-section">
+            <p>"You are me?", I asked.</p>
+            <p style="margin-top: 1rem;">He said, "Not you but your thought."</p>
+            <p style="margin-top: 1.5rem;">"If you are my thought then why can't I answer?"</p>
+            <p>I again asked.</p>
+            <p style="margin-top: 1rem;">He said, "Because there is no answer."</p>
+        </section>
+
+        <section class="poem-section">
+            <p>I took a step back.</p>
+            <p style="margin-top: 1.5rem;">He again said, You are just a normal man.</p>
+            <p style="margin-top: 1rem;">You shouldn't think about it because</p>
+        </section>
+
+        <div class="realization">
+            <p>Even if you want to,</p>
+            <p>you could never be able to kill billions of people.</p>
+        </div>
+
+        <section class="poem-section">
+            <p>Those are just thoughts</p>
+            <p>Nothing more, nothing less.</p>
+        </section>
+
+        <div class="ending">
+            <p>Finally I understood.</p>
+            <p>I woke up from the dream.</p>
+            <p>I forgot everything except the fact that</p>
+            <div class="final-line">
+                A thought is just a fiction.<br>
+                It's nothing to worry about.<br>
+                Just live your life, like you would have.
+            </div>
+        </div>
+
+        <p class="subtitle" style="text-align: center; margin-top: 4rem; opacity: 0.5;">
+            © Md Abu Salehin. All rights reserved.
+        </p>
+    </div>
+
+    <script>
+        // Particle system
+        const particlesContainer = document.getElementById('particles');
+        const colors = ['#e63946', '#1d3557', '#f1faee'];
+
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Scroll progress
+        const progressBar = document.getElementById('progressBar');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            progressBar.style.width = progress + '%';
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.poem-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Parallax split effect
+        window.addEventListener('scroll', () => {
+            const scroll = window.scrollY;
+            const splitLeft = document.getElementById('splitLeft');
+            const splitRight = document.getElementById('splitRight');
+            splitLeft.style.transform = `translateY(${scroll * 0.3}px)`;
+            splitRight.style.transform = `translateY(${-scroll * 0.3}px)`;
+        });
+    </script>
+</body>
+</html>

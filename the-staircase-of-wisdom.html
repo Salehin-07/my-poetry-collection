@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Staircase of Wisdom | Md Abu Salehin</title>
+    <meta name="description" content="A poem about life's stages divided by wisdom by Md Abu Salehin.">
+    <link rel="icon" type="image/x-icon" href="./logo.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --stone-dark: #1a1a1a;
+            --stone-mid: #2d2d2d;
+            --stone-light: #404040;
+            --gold: #d4af37;
+            --gold-dim: #a0862e;
+            --cream: #f5f0e6;
+            --shadow: rgba(212, 175, 55, 0.2);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: #0d0d0d;
+            color: var(--cream);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Staircase Background */
+        .staircase-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 10vh;
+            perspective: 1000px;
+            overflow: hidden;
+        }
+
+        .staircase {
+            position: relative;
+            width: 300px;
+            height: 500px;
+            transform-style: preserve-3d;
+        }
+
+        .step {
+            position: absolute;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(135deg, var(--stone-mid), var(--stone-dark));
+            border: 1px solid var(--gold-dim);
+            transition: all 0.5s ease;
+        }
+
+        .step:nth-child(1) { bottom: 0; }
+        .step:nth-child(2) { bottom: 50px; }
+        .step:nth-child(3) { bottom: 100px; }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+        }
+
+        /* Light rays */
+        .light-rays {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 100%;
+            background: radial-gradient(ellipse at top, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 10;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 8rem 0 4rem;
+            position: relative;
+        }
+
+        .staircase-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .step-icon {
+            color: var(--gold);
+            font-size: 2rem;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .step-icon:nth-child(2) { animation-delay: 1s; }
+        .step-icon:nth-child(3) { animation-delay: 2s; }
+
+        @keyframes glow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; text-shadow: 0 0 20px var(--gold); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: var(--cream);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        /* Opening */
+        .opening {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .opening p {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 2;
+        }
+
+        /* Step Sections */
+        .step-section {
+            padding: 3rem 0;
+            margin: 2rem 0;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+            position: relative;
+        }
+
+        .step-section.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .step-section::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--gold), var(--gold-dim));
+            border-radius: 2px;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-badge {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--stone-dark);
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--cream);
+        }
+
+        .step-description {
+            font-style: italic;
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-content {
+            padding-left: 4rem;
+        }
+
+        .step-content p {
+            font-size: 1.2rem;
+            line-height: 2;
+            white-space: pre-wrap;
+        }
+
+        /* The Final Truth */
+        .truth-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            border-radius: 20px;
+        }
+
+        .truth-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .truth-section p {
+            font-size: 1.3rem;
+            line-height: 2.2;
+            white-space: pre-wrap;
+        }
+
+        /* The Decision */
+        .decision {
+            text-align: center;
+            padding: 4rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .decision p {
+            font-size: 1.2rem;
+            line-height: 2;
+            white-space: pre-wrap;
+        }
+
+        .decision .final-lines {
+            margin-top: 2rem;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--gold);
+            line-height: 2.2;
+        }
+
+        /* Back Link */
+        .back-link {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            background: rgba(13, 13, 13, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .back-link:hover { opacity: 1; }
+
+        /* Ground level decoration */
+        .ground {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(0deg, #0d0d0d 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content { padding: 2rem 1.5rem; }
+            .header { padding: 5rem 0 2rem; }
+            h1 { font-size: 1.8rem; }
+            .step-section::before { left: -1rem; }
+            .step-content { padding-left: 2rem; }
+            .staircase-bg { display: none; }
+            .back-link { top: 1rem; left: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="light-rays"></div>
+    <div class="staircase-bg">
+        <div class="staircase">
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+        </div>
+    </div>
+    <div class="ground"></div>
+
+    <a href="./index.html" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Collection
+    </a>
+
+    <div class="content">
+        <header class="header">
+            <div class="staircase-icon">
+                <span class="step-icon">▭</span>
+                <span class="step-icon">▭</span>
+                <span class="step-icon">▭</span>
+            </div>
+            <h1>The Staircase of Wisdom</h1>
+            <p class="subtitle">Life's stages divided by wisdom</p>
+            <p class="subtitle" style="margin-top: 0.5rem; font-size: 0.9rem;">By Md Abu Salehin</p>
+        </header>
+
+        <div class="opening">
+            <p>Life is the staircase of three steps,</p>
+            <p>Divided by wisdom.</p>
+        </div>
+
+        <section class="step-section">
+            <div class="step-number">
+                <div class="step-badge">I</div>
+                <div>
+                    <div class="step-title">The First Step: Beginning</div>
+                    <div class="step-description">Cursed by pride, but reachable for all</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p>They think they know everything,</p>
+                <p>Even while they know nothing.</p>
+            </div>
+        </section>
+
+        <section class="step-section">
+            <div class="step-number">
+                <div class="step-badge">II</div>
+                <div>
+                    <div class="step-title">The Second Step: Realization</div>
+                    <div class="step-description">Blessed by respect</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p>He knows that he knows</p>
+                <p>Yet he stays humble.</p>
+                <p style="margin-top: 1rem;">He respects everyone</p>
+                <p>And gets the same from others.</p>
+            </div>
+        </section>
+
+        <section class="step-section">
+            <div class="step-number">
+                <div class="step-badge">III</div>
+                <div>
+                    <div class="step-title">The Last Step: Unknown</div>
+                    <div class="step-description">Loved by the world</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p>He knows everything</p>
+                <p>There is for him to know</p>
+                <p>Yet he claims he knows nothing.</p>
+                <p style="margin-top: 1rem;">And that's true.</p>
+            </div>
+        </section>
+
+        <div class="truth-section">
+            <h3>The Truth</h3>
+            <p>The more one learns,</p>
+            <p>The more humble he becomes.</p>
+            <p style="margin-top: 1.5rem;">The less one knows,</p>
+            <p>The more pride he will have.</p>
+        </div>
+
+        <div class="decision">
+            <p>I fear that.</p>
+            <p>What if I can't go to the second step?</p>
+            <p>What if I become arrogant?</p>
+            <p style="margin-top: 2rem;">That's why,</p>
+            <p>I decided to never step on the staircase</p>
+            <p>And stay on the ground,</p>
+            <div class="final-lines">
+                The ground that will never have pride.
+            </div>
+        </div>
+
+        <p class="subtitle" style="text-align: center; margin-top: 4rem; opacity: 0.5;">
+            © Md Abu Salehin. All rights reserved.
+        </p>
+    </div>
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.step-section').forEach((section, index) => {
+            section.style.transitionDelay = (index * 0.3) + 's';
+            observer.observe(section);
+        });
+
+        // Parallax staircase
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const staircase = document.querySelector('.staircase');
+            if (staircase) {
+                staircase.style.transform = `translateY(${-scrolled * 0.05}px) rotateX(${scrolled * 0.02}deg)`;
+            }
+        });
+
+        // Animate steps on scroll
+        const steps = document.querySelectorAll('.step');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            steps.forEach((step, index) => {
+                const opacity = Math.max(0, 1 - (scrolled - index * 200) / 400);
+                step.style.opacity = opacity;
+            });
+        });
+    </script>
+</body>
+</html>
