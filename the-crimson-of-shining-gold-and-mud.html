@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Crimson of Shining Gold and Mud | Md Abu Salehin</title>
+<meta name="description" content="A poem about two paths — gold and mud — and the search for true humanity by Md Abu Salehin.">
+<link rel="icon" type="image/x-icon" href="./logo.ico">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#d4af37;--gold-light:#f5d742;--gold-dim:#a0862e;--mud:#5c4033;--mud-light:#8b7355;--mud-dark:#3e2723;--crimson:#dc143c;--crimson-glow:rgba(220,20,60,0.3);--cream:#f5f0e6;--void:#0d0b09;--glass:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.06)}
+html{scroll-behavior:smooth}
+body{font-family:'Cormorant Garamond',serif;background:var(--void);color:var(--cream);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+.duality-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.duality-bg::before,.duality-bg::after{content:'';position:absolute;top:0;width:50%;height:100%}
+.duality-bg::before{left:0;background:radial-gradient(ellipse at 30% 50%,rgba(212,175,55,0.08),transparent 60%);animation:goldPulse 7s ease-in-out infinite}
+.duality-bg::after{right:0;background:radial-gradient(ellipse at 70% 50%,rgba(92,64,51,0.08),transparent 60%);animation:mudPulse 7s ease-in-out infinite}
+@keyframes goldPulse{0%,100%{opacity:0.4}50%{opacity:1}}
+@keyframes mudPulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+.crimson-bridge{position:fixed;top:0;left:50%;transform:translateX(-50%);width:2px;height:100%;background:linear-gradient(180deg,transparent,var(--crimson),transparent);opacity:0.15;z-index:1;pointer-events:none}
+
+.gold-particles{position:fixed;inset:0;left:0;width:50%;pointer-events:none;z-index:1}
+.mud-particles{position:fixed;inset:0;left:50%;width:50%;pointer-events:none;z-index:1}
+.particle{position:absolute;border-radius:50%;animation:float linear infinite;will-change:transform}
+.gold-particles .particle{background:var(--gold);box-shadow:0 0 6px var(--gold)}
+.mud-particles .particle{background:var(--mud-light);box-shadow:0 0 4px var(--mud-light)}
+@keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.5}90%{opacity:0.3}100%{transform:translateY(-100vh) rotate(360deg);opacity:0}}
+
+.back-link{position:fixed;top:1.5rem;left:1.5rem;z-index:100;display:flex;align-items:center;gap:0.5rem;color:var(--cream);text-decoration:none;font-size:0.82rem;font-family:'DM Sans',sans-serif;background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);padding:0.5rem 1rem;border-radius:100px;transition:background 0.3s,border-color 0.3s,transform 0.3s}
+.back-link:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.12);transform:translateX(-3px)}
+.back-link svg{width:14px;height:14px;transition:transform 0.3s}
+.back-link:hover svg{transform:translateX(-2px)}
+
+.content{position:relative;z-index:10;max-width:760px;margin:0 auto;padding:3rem 2rem}
+
+.header{text-align:center;padding:7rem 0 3rem}
+.duality-symbol{display:flex;justify-content:center;align-items:center;gap:2rem;margin-bottom:2rem}
+.duality-symbol .gold-icon{font-size:2.5rem;color:var(--gold);animation:goldFloat 4s ease-in-out infinite}
+.duality-symbol .crimson-icon{font-size:2.5rem;color:var(--crimson);animation:crimsonPulse 3s ease-in-out infinite;text-shadow:0 0 20px var(--crimson-glow)}
+.duality-symbol .mud-icon{font-size:2.5rem;color:var(--mud-light);animation:mudFloat 4s ease-in-out infinite}
+@keyframes goldFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes mudFloat{0%,100%{transform:translateY(-8px)}50%{transform:translateY(0)}}
+@keyframes crimsonPulse{0%,100%{transform:scale(1);opacity:0.7}50%{transform:scale(1.2);opacity:1}}
+
+h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;letter-spacing:2px;margin-bottom:0.75rem;color:var(--cream)}
+h1 .gold-word{color:var(--gold)}
+h1 .mud-word{color:var(--mud-light)}
+h1 .crimson-word{color:var(--crimson);text-shadow:0 0 20px var(--crimson-glow)}
+.subtitle{font-size:1.1rem;font-style:italic;opacity:0.6}
+.author-line{font-family:'DM Sans',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;opacity:0.35;margin-top:0.75rem}
+
+.split-path{display:flex;gap:1px;margin:2.5rem 0;position:relative}
+.split-path::before{content:'?';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2rem;color:var(--crimson);opacity:0.4;z-index:2;font-family:'Playfair Display',serif}
+.path-half{flex:1;padding:1.5rem;text-align:center;border-radius:8px;opacity:0;transform:translateY(30px);transition:all 0.8s ease}
+.path-half.visible{opacity:1;transform:translateY(0)}
+.path-gold{background:linear-gradient(135deg,rgba(212,175,55,0.08),rgba(212,175,55,0.02));border:1px solid rgba(212,175,55,0.2)}
+.path-mud{background:linear-gradient(135deg,rgba(92,64,51,0.08),rgba(92,64,51,0.02));border:1px solid rgba(92,64,51,0.2)}
+.path-half .path-label{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:0.75rem}
+.path-gold .path-label{color:var(--gold)}
+.path-mud .path-label{color:var(--mud-light)}
+.path-half p{font-size:1rem;line-height:1.8;white-space:pre-wrap;opacity:0.75}
+.path-gold p{color:rgba(245,240,230,0.8)}
+.path-mud p{color:rgba(245,240,230,0.7)}
+
+.crimson-divider{text-align:center;padding:2rem 0;display:flex;align-items:center;justify-content:center;gap:1rem}
+.crimson-divider::before,.crimson-divider::after{content:'';flex:1;height:1px;max-width:80px}
+.crimson-divider::before{background:linear-gradient(90deg,transparent,var(--gold))}
+.crimson-divider::after{background:linear-gradient(90deg,var(--mud-light),transparent)}
+.crimson-divider span{color:var(--crimson);font-size:1.5rem;opacity:0.6}
+
+.poem-section{padding:1.5rem 0;opacity:0;transform:translateY(30px);transition:opacity 0.6s,transform 0.6s;will-change:transform,opacity}
+.poem-section.visible{opacity:1;transform:translateY(0)}
+.poem-section p{font-size:1.2rem;line-height:2.1;white-space:pre-wrap;color:rgba(245,240,230,0.8)}
+
+.gold-stanza{padding:1.5rem 2rem;margin:1.5rem 0;background:linear-gradient(135deg,rgba(212,175,55,0.06),transparent);border-left:3px solid var(--gold);border-radius:0 12px 12px 0}
+.gold-stanza p{font-size:1.15rem;line-height:2;white-space:pre-wrap;color:rgba(245,240,230,0.75)}
+
+.mud-stanza{padding:1.5rem 2rem;margin:1.5rem 0;background:linear-gradient(135deg,rgba(92,64,51,0.06),transparent);border-right:3px solid var(--mud-light);border-radius:12px 0 0 12px}
+.mud-stanza p{font-size:1.15rem;line-height:2;white-space:pre-wrap;color:rgba(245,240,230,0.75)}
+
+.transition-stanza{text-align:center;padding:3rem 2rem;margin:2.5rem 0;background:radial-gradient(ellipse at center,rgba(220,20,60,0.04),transparent 70%);border:1px solid rgba(220,20,60,0.15);border-radius:16px}
+.transition-stanza p{font-size:1.2rem;line-height:2;white-space:pre-wrap;color:rgba(245,240,230,0.7)}
+
+.realization{text-align:center;padding:4rem 2rem;margin:3rem 0;border-top:1px solid rgba(220,20,60,0.15);border-bottom:1px solid rgba(220,20,60,0.15)}
+.realization p{font-size:1.3rem;line-height:2.2;white-space:pre-wrap}
+.realization .question-text{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--crimson);margin-top:1.5rem;font-style:italic;text-shadow:0 0 30px var(--crimson-glow)}
+
+.ending{text-align:center;padding:3rem 0;margin-top:3rem}
+.ending p{font-size:1.2rem;line-height:2.1;white-space:pre-wrap;opacity:0.7}
+.ending .final-verse{margin-top:2rem;font-size:1.5rem;font-style:italic;color:var(--crimson);opacity:1;text-shadow:0 0 20px rgba(220,20,60,0.15)}
+
+.footer-text{text-align:center;margin-top:3rem;opacity:0.25;font-size:0.82rem;font-family:'DM Sans',sans-serif}
+
+@media(max-width:768px){
+  .content{padding:2rem 1.25rem}
+  .header{padding:5rem 0 2rem}
+  h1{font-size:1.8rem}
+  .split-path{flex-direction:column;gap:0.5rem}
+  .split-path::before{display:none}
+  .poem-section p{font-size:1.05rem}
+  .gold-stanza{padding:1.25rem 1.5rem}
+  .mud-stanza{padding:1.25rem 1.5rem}
+  .back-link{top:1rem;left:1rem;padding:0.45rem 0.85rem}
+  .realization .question-text{font-size:1.3rem}
+  .duality-symbol{gap:1rem}
+  .duality-symbol .gold-icon,.duality-symbol .crimson-icon,.duality-symbol .mud-icon{font-size:1.8rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+}
+</style>
+</head>
+<body>
+<div class="duality-bg"></div>
+<div class="crimson-bridge"></div>
+<div class="gold-particles" id="goldParticles"></div>
+<div class="mud-particles" id="mudParticles"></div>
+
+<a href="./index.html" class="back-link">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back
+</a>
+
+<div class="content">
+<header class="header">
+<div class="duality-symbol">
+<span class="gold-icon">✦</span>
+<span class="crimson-icon">♥</span>
+<span class="mud-icon">●</span>
+</div>
+<h1>The <span class="crimson-word">Crimson</span> of<br>Shining <span class="gold-word">Gold</span> and <span class="mud-word">Mud</span></h1>
+<p class="subtitle">Two paths, one search, an eternal question</p>
+<p class="author-line">By Md Abu Salehin</p>
+</header>
+
+<div class="poem-section"><p>I was on my own, trying to find,</p><p>The crimson of hope and humanity unknown</p></div>
+
+<div class="split-path">
+<div class="path-half path-gold">
+<div class="path-label">The Shining One</div>
+<p>Roads built of silver</p><p>Men made of gold</p><p>Rivers of the finest wine</p>
+</div>
+<div class="path-half path-mud">
+<div class="path-label">The Other</div>
+<p>Roads made of stone</p><p>People made of mud</p><p>Rivers where flowed water</p>
+</div>
+</div>
+
+<div class="poem-section"><p>Suddenly I saw 2 paths open</p><p>One made of mud and another of shining gold.</p><p>I entered the shining one,</p><p>Still trying to find the crimson that is unknown.</p></div>
+
+<div class="crimson-divider"><span>✦</span></div>
+
+<div class="gold-stanza"><p>I saw roads built of silver,</p><p>Men made of gold</p><p>And rivers where flows the finest wine,</p><p>But something seemed missing.</p><p>Everyone looked pale.</p></div>
+
+<div class="gold-stanza"><p>They would all just sleep and eat</p><p>Just like a cow does.</p><p>They would fight,</p><p>Just like wild animals do,</p><p>They could betray,</p><p>Just like the devil did.</p></div>
+
+<div class="gold-stanza"><p>Some would try to stop them</p><p>Like a human does</p><p>And most would watch</p><p>Just like an owl watches.</p></div>
+
+<div class="poem-section"><p>I left that road and went to the other.</p></div>
+
+<div class="crimson-divider"><span>●</span></div>
+
+<div class="mud-stanza"><p>Where people were made of mud,</p><p>Roads made of stone,</p><p>Houses made of brick,</p><p>And rivers where flowed water,</p></div>
+
+<div class="mud-stanza"><p>They would eat one time</p><p>And skip the next.</p><p>They would help each other.</p><p>I felt like I found something,</p><p>And was about to leave.</p></div>
+
+<div class="crimson-divider"><span>♥</span></div>
+
+<div class="transition-stanza"><p>Suddenly I saw something again,</p><p>Some of those mud were transferred to the gold.</p></div>
+
+<div class="transition-stanza"><p>Suddenly, they started to become,</p><p>Just like the people of that world</p><p>And somehow the mud started to fade.</p><p>A while later there were no mud</p><p>And everything was gold.</p></div>
+
+<div class="realization">
+<p>I started to think hard about</p>
+<p>What did I find or Did I really find anything</p>
+<p>And thought,</p>
+<div class="question-text">"But the crimson I wanted to find,<br>Shouldn't it be in either the gold or the mud?"</div>
+</div>
+
+<div class="ending">
+<p>I was on my own, trying to find,</p>
+<p>The crimson of hope and humanity unknown.</p>
+<div class="final-verse">Perhaps the crimson was never in the path —<br>but in the one who walks it.</div>
+</div>
+
+<p class="footer-text">&copy; Md Abu Salehin. All rights reserved.</p>
+</div>
+
+<script>
+const gp=document.getElementById('goldParticles');
+const mp=document.getElementById('mudParticles');
+for(let i=0;i<15;i++){
+  [gp,mp].forEach((c,j)=>{
+    const p=document.createElement('div');p.className='particle';
+    const s=Math.random()*4+2;
+    p.style.width=s+'px';p.style.height=s+'px';
+    p.style.left=j===0?Math.random()*80+10+'%':Math.random()*80+10+'%';
+    p.style.animationDelay=Math.random()*15+'s';
+    p.style.animationDuration=(Math.random()*10+12)+'s';
+    c.appendChild(p);
+  });
+}
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.poem-section, .path-half').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

@@ -22,8 +22,7 @@ Click on any poem title to read the full piece:
 4. [The Staircase of Wisdom](./the-staircase-of-wisdom.md)
 5. [Law - Unnecessary or Unused](./law-unnecessary-or-unused.md)
 6. [A Late Return or Not](./a-late-return-or-not.md)
-
-*More poems will be added as I continue writing and sharing my work.*
+7. [The Crimson of Shining Gold and Mud](./the-crimson-of-shining-gold-and-mud.md)
 
 ---
 

@@ -1,973 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Poetry Collection by Md Abu Salehin | Words from the Soul</title>
-    <meta name="description" content="Explore the poetry collection of Md Abu Salehin - A sanctuary of verses where emotions take form and thoughts find their voice.">
-    <meta name="author" content="Md Abu Salehin">
-    <link rel="icon" type="image/x-icon" href="./logo.ico">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --ink: #1a1814;
-            --parchment: #f7f3eb;
-            --cream: #ebe5d9;
-            --amber: #c9a227;
-            --amber-soft: rgba(201, 162, 39, 0.15);
-            --amber-glow: rgba(201, 162, 39, 0.4);
-            --charcoal: #2d2a26;
-            --sage: #6b7c6b;
-            --dusty-rose: #a67f7c;
-            --border: rgba(45, 42, 38, 0.15);
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Crimson Pro', Georgia, serif;
-            background: var(--parchment);
-            color: var(--ink);
-            line-height: 1.75;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Subtle paper texture */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 1.5rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.4s ease;
-        }
-
-        nav.scrolled {
-            padding: 1rem 3rem;
-            background: rgba(247, 243, 235, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 1px 0 var(--border);
-        }
-
-        .nav-logo {
-            font-family: 'EB Garamond', serif;
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: var(--ink);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-family: 'Crimson Pro', serif;
-            font-size: 0.95rem;
-            font-weight: 400;
-            color: var(--charcoal);
-            text-decoration: none;
-            position: relative;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 50%;
-            width: 0;
-            height: 1px;
-            background: var(--amber);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero - Editorial Magazine Style */
-        .hero {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            position: relative;
-        }
-
-        .hero-left {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 8rem 4rem 4rem 8rem;
-            position: relative;
-        }
-
-        .hero-tag {
-            font-family: 'Crimson Pro', serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--amber);
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fade-in 1s ease-out 0.3s forwards;
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3.5rem, 6vw, 5.5rem);
-            font-weight: 400;
-            line-height: 1.05;
-            color: var(--ink);
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fade-in 1s ease-out 0.5s forwards;
-        }
-
-        .hero-title em {
-            font-style: italic;
-            font-weight: 400;
-        }
-
-        .hero-quote {
-            font-family: 'EB Garamond', serif;
-            font-size: 1.25rem;
-            font-style: italic;
-            color: var(--charcoal);
-            max-width: 400px;
-            line-height: 1.7;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fade-in 1s ease-out 0.7s forwards;
-        }
-
-        .hero-author {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--sage);
-            letter-spacing: 1px;
-            opacity: 0;
-            animation: fade-in 1s ease-out 0.9s forwards;
-        }
-
-        .hero-right {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--parchment) 100%);
-            overflow: hidden;
-        }
-
-        .hero-illustration {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        /* Decorative Book/Pen Illustration */
-        .book-stack {
-            position: absolute;
-            bottom: 10%;
-            right: 15%;
-            width: 250px;
-        }
-
-        .book {
-            position: absolute;
-            background: var(--charcoal);
-            border-radius: 2px 8px 8px 2px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .book:nth-child(1) { width: 180px; height: 25px; bottom: 0; left: 0; transform: rotate(-3deg); }
-        .book:nth-child(2) { width: 200px; height: 28px; bottom: 30px; left: 20px; background: var(--sage); transform: rotate(2deg); }
-        .book:nth-child(3) { width: 160px; height: 22px; bottom: 60px; left: 10px; background: var(--dusty-rose); transform: rotate(-1deg); }
-
-        .quill {
-            position: absolute;
-            top: 20%;
-            left: 30%;
-            font-size: 5rem;
-            opacity: 0.6;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(-15deg); }
-            50% { transform: translateY(-20px) rotate(-10deg); }
-        }
-
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 8rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.85rem;
-            color: var(--charcoal);
-            opacity: 0.6;
-            animation: fade-in 1s ease-out 1.2s backwards;
-        }
-
-        .scroll-line {
-            width: 40px;
-            height: 1px;
-            background: var(--amber);
-        }
-
-        /* Poems Section - Magazine Grid */
-        .poems-section {
-            padding: 8rem 6rem;
-            background: var(--parchment);
-        }
-
-        .section-header {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            margin-bottom: 4rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 400;
-        }
-
-        .section-count {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1rem;
-            color: var(--charcoal);
-            opacity: 0.6;
-        }
-
-        /* Asymmetric Grid */
-        .poems-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 2rem;
-        }
-
-        .poem-card {
-            background: var(--parchment);
-            border: 1px solid var(--border);
-            padding: 2.5rem;
-            position: relative;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateY(40px);
-        }
-
-        .poem-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .poem-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--amber);
-            transition: width 0.5s ease;
-        }
-
-        .poem-card:hover::before {
-            width: 100%;
-        }
-
-        .poem-card:hover {
-            box-shadow: 0 20px 60px rgba(26, 24, 20, 0.08);
-            transform: translateY(-5px);
-        }
-
-        /* Card Sizes - Magazine Style */
-        .poem-card:nth-child(1) { grid-column: span 7; }
-        .poem-card:nth-child(2) { grid-column: span 5; }
-        .poem-card:nth-child(3) { grid-column: span 5; }
-        .poem-card:nth-child(4) { grid-column: span 7; }
-        .poem-card:nth-child(5) { grid-column: span 6; }
-        .poem-card:nth-child(6) { grid-column: span 6; }
-
-        .poem-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 400;
-            color: var(--amber-soft);
-            line-height: 1;
-            margin-bottom: 1.5rem;
-        }
-
-        .poem-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .poem-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 0.75rem;
-        }
-
-        .poem-card h3 a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .poem-card:hover h3 a {
-            color: var(--amber);
-        }
-
-        .poem-tagline {
-            font-family: 'Crimson Pro', serif;
-            font-size: 0.95rem;
-            font-style: italic;
-            color: var(--charcoal);
-            opacity: 0.7;
-            margin-bottom: 1rem;
-        }
-
-        .poem-excerpt {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1rem;
-            color: var(--charcoal);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .poem-quote {
-            font-family: 'EB Garamond', serif;
-            font-size: 1.1rem;
-            font-style: italic;
-            color: var(--ink);
-            padding: 1.5rem;
-            background: linear-gradient(135deg, var(--amber-soft), transparent);
-            border-left: 2px solid var(--amber);
-            margin-top: auto;
-        }
-
-        .poem-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: 'Crimson Pro', serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--amber);
-            text-decoration: none;
-            margin-top: 1.5rem;
-            transition: gap 0.3s ease;
-        }
-
-        .poem-link:hover {
-            gap: 1rem;
-        }
-
-        /* Pull Quote Section */
-        .pull-quote-section {
-            padding: 6rem 8rem;
-            background: var(--charcoal);
-            text-align: center;
-            position: relative;
-        }
-
-        .pull-quote-section::before,
-        .pull-quote-section::after {
-            content: '"';
-            font-family: 'Playfair Display', serif;
-            font-size: 8rem;
-            color: var(--amber);
-            opacity: 0.2;
-            position: absolute;
-        }
-
-        .pull-quote-section::before { top: 2rem; left: 4rem; }
-        .pull-quote-section::after { bottom: 2rem; right: 4rem; transform: rotate(180deg); }
-
-        .pull-quote {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            font-style: italic;
-            color: var(--parchment);
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-
-        .pull-quote-author {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1rem;
-            color: var(--amber);
-            margin-top: 2rem;
-            letter-spacing: 2px;
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 8rem 6rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-        }
-
-        .about-content h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 400;
-            margin-bottom: 2rem;
-        }
-
-        .about-content p {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.1rem;
-            color: var(--charcoal);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-image {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .portrait-frame {
-            width: 300px;
-            height: 400px;
-            background: var(--cream);
-            border: 1px solid var(--border);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .portrait-frame::before {
-            content: '';
-            position: absolute;
-            inset: 10px;
-            border: 1px solid var(--amber-soft);
-        }
-
-        .portrait-icon {
-            font-size: 6rem;
-            opacity: 0.3;
-        }
-
-        .portrait-decoration {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border: 1px solid var(--amber-soft);
-        }
-
-        .portrait-decoration:nth-child(2) {
-            top: -20px;
-            right: -20px;
-            transform: rotate(15deg);
-        }
-
-        .portrait-decoration:nth-child(3) {
-            bottom: -20px;
-            left: -20px;
-            transform: rotate(-15deg);
-        }
-
-        /* Info Grid */
-        .info-section {
-            padding: 6rem;
-            background: var(--cream);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .info-card {
-            background: var(--parchment);
-            border: 1px solid var(--border);
-            padding: 2.5rem;
-        }
-
-        .info-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .info-card h3 span {
-            font-size: 1.5rem;
-        }
-
-        .info-card p {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1rem;
-            color: var(--charcoal);
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .info-list {
-            list-style: none;
-        }
-
-        .info-list li {
-            font-family: 'Crimson Pro', serif;
-            font-size: 0.95rem;
-            color: var(--charcoal);
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-        }
-
-        .info-list li::before {
-            content: '✓';
-            color: var(--amber);
-            font-weight: bold;
-        }
-
-        .info-list li.restricted::before {
-            content: '✗';
-            color: var(--dusty-rose);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .contact-item span:first-child {
-            font-size: 1.25rem;
-        }
-
-        .contact-item a {
-            color: var(--amber);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: var(--ink);
-        }
-
-        /* Footer */
-        footer {
-            padding: 4rem 6rem;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-text {
-            font-family: 'Crimson Pro', serif;
-            font-size: 0.95rem;
-            color: var(--charcoal);
-            opacity: 0.6;
-            margin-bottom: 2rem;
-        }
-
-        .footer-copyright {
-            font-size: 0.85rem;
-            color: var(--charcoal);
-            opacity: 0.5;
-        }
-
-        /* Decorative Divider */
-        .decorative-divider {
-            text-align: center;
-            padding: 2rem 0;
-            color: var(--amber);
-            font-size: 1.5rem;
-            letter-spacing: 1rem;
-            opacity: 0.5;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .hero { grid-template-columns: 1fr; }
-            .hero-right { display: none; }
-            .hero-left { padding: 8rem 4rem 4rem; }
-
-            .poems-grid { grid-template-columns: 1fr 1fr; }
-            .poem-card:nth-child(n) { grid-column: span 1; }
-
-            .about-section { grid-template-columns: 1fr; }
-            .info-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            nav { padding: 1rem 2rem; }
-            .nav-links { display: none; }
-
-            .hero-left { padding: 6rem 2rem 3rem; }
-            .hero-title { font-size: 2.5rem; }
-
-            .poems-section, .info-section, .about-section { padding: 4rem 2rem; }
-
-            .poems-grid { grid-template-columns: 1fr; }
-            .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-
-            .pull-quote-section { padding: 4rem 2rem; }
-            .pull-quote-section::before, .pull-quote-section::after { font-size: 4rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Words from the Soul | Poetry by Md Abu Salehin</title>
+<meta name="description" content="A sanctuary of verses where emotions take form and thoughts find their voice.">
+<meta name="author" content="Md Abu Salehin">
+<link rel="icon" type="image/x-icon" href="./logo.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1a1814;--parchment:#f7f3eb;--cream:#ebe5d9;--amber:#c9a227;--amber-dim:rgba(201,162,39,0.08);--amber-soft:rgba(201,162,39,0.12);--amber-glow:rgba(201,162,39,0.2);--charcoal:#2d2a26;--sage:#6b7c6b;--dusty-rose:#a67f7c;--glass:rgba(255,255,255,0.7);--glass-border:rgba(45,42,38,0.1);--glass-hover:rgba(255,255,255,0.9)}
+html{scroll-behavior:smooth}
+body{font-family:'Crimson Pro',Georgia,serif;background:var(--parchment);color:var(--ink);line-height:1.65;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");opacity:0.02;pointer-events:none;z-index:999;mix-blend-mode:multiply}
+.bg-glow{position:fixed;top:-30%;left:-20%;width:80%;height:80%;background:radial-gradient(circle,rgba(201,162,39,0.04),transparent 70%);pointer-events:none;z-index:0}
+.bg-glow:nth-child(2){top:auto;bottom:-20%;right:-10%;left:auto;width:60%;height:60%;background:radial-gradient(circle,rgba(166,127,124,0.05),transparent 70%)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background 0.4s,padding 0.4s}
+nav.scrolled{background:rgba(247,243,235,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);padding:1rem 3rem}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ink);text-decoration:none;letter-spacing:0.5px;transition:color 0.3s}
+.nav-logo:hover{color:var(--amber)}
+.nav-links{display:flex;gap:2.75rem;list-style:none;align-items:center}
+.nav-links a{font-family:'Crimson Pro',serif;font-size:0.9rem;font-weight:400;color:var(--charcoal);text-decoration:none;letter-spacing:0.5px;position:relative;padding:0.25rem 0;transition:color 0.3s}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--amber);transition:width 0.4s cubic-bezier(0.22,1,0.36,1)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem 6rem 6rem;position:relative;z-index:2}
+.hero-tag{font-family:'Crimson Pro',serif;font-size:0.8rem;font-weight:500;text-transform:uppercase;letter-spacing:4px;color:var(--amber);margin-bottom:2rem;opacity:0;transform:translateY(24px);animation:rise 1s cubic-bezier(0.22,1,0.36,1) 0.3s forwards}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,7vw,5.5rem);font-weight:400;line-height:1.02;color:var(--ink);margin-bottom:2rem;opacity:0;transform:translateY(32px);animation:rise 1s cubic-bezier(0.22,1,0.36,1) 0.5s forwards}
+.hero-title .italic{font-style:italic;color:var(--amber)}
+.hero-quote{font-family:'EB Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--charcoal);max-width:420px;line-height:1.65;margin-bottom:2.5rem;opacity:0;transform:translateY(24px);animation:rise 1s cubic-bezier(0.22,1,0.36,1) 0.7s forwards}
+.hero-author{font-family:'Crimson Pro',serif;font-size:0.9rem;font-weight:500;color:var(--sage);letter-spacing:2px;text-transform:uppercase;opacity:0;transform:translateY(16px);animation:rise 1s cubic-bezier(0.22,1,0.36,1) 0.9s forwards}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+
+.hero-right{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,var(--cream) 0%,var(--parchment) 100%)}
+.hero-ring{position:absolute;border-radius:50%;border:1px solid var(--glass-border)}
+.hero-ring:nth-child(1){width:520px;height:520px;animation:ringDrift 25s ease-in-out infinite}
+.hero-ring:nth-child(2){width:380px;height:380px;border-color:rgba(201,162,39,0.08);animation:ringDrift 20s ease-in-out infinite reverse}
+.hero-ring:nth-child(3){width:240px;height:240px;border-color:rgba(201,162,39,0.15);background:radial-gradient(circle,rgba(201,162,39,0.04),transparent 60%);animation:ringDrift 15s ease-in-out infinite}
+@keyframes ringDrift{0%,100%{transform:translate(0,0)}33%{transform:translate(12px,-16px)}66%{transform:translate(-8px,12px)}}
+
+.hero-float{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--amber);opacity:0;animation:floatUp 10s ease-in-out infinite}
+.hero-float:nth-child(4){left:20%;animation-delay:0s;width:3px;height:3px}
+.hero-float:nth-child(5){left:50%;animation-delay:3s;width:6px;height:6px;opacity:0.08}
+.hero-float:nth-child(6){left:70%;animation-delay:6s;width:4px;height:4px}
+@keyframes floatUp{0%{bottom:-10%;opacity:0}10%{opacity:0.12}90%{opacity:0.12}100%{bottom:110%;opacity:0}}
+
+.hero-glyph{font-family:'Playfair Display',serif;font-size:18rem;font-style:italic;color:rgba(201,162,39,0.04);position:absolute;user-select:none;pointer-events:none;line-height:1}
+.hero-glyph:nth-child(7){top:5%;right:10%;font-size:22rem}
+.hero-glyph:nth-child(8){bottom:5%;left:5%;font-size:14rem;color:rgba(201,162,39,0.03)}
+
+.scroll-indicator{position:absolute;bottom:3rem;left:6rem;display:flex;align-items:center;gap:1rem;font-family:'Crimson Pro',serif;font-size:0.8rem;color:var(--charcoal);text-transform:uppercase;letter-spacing:2px;opacity:0;animation:rise 1s ease-out 1.3s forwards}
+.scroll-line{width:48px;height:1px;background:var(--amber);position:relative;overflow:hidden}
+.scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--charcoal);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%{left:-100%}100%{left:200%}}
+
+.poems{padding:8rem 6rem;border-top:1px solid var(--glass-border);position:relative;z-index:1}
+.section-header{margin-bottom:4rem}
+.section-number{font-family:'Playfair Display',serif;font-size:0.9rem;color:var(--amber);letter-spacing:3px;text-transform:uppercase;margin-bottom:0.75rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:400;color:var(--ink);line-height:1.15}
+.section-title .italic{font-style:italic;color:var(--amber)}
+
+.poems-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.poem-card{background:var(--glass);border:1px solid var(--glass-border);padding:2.5rem;position:relative;transition:background 0.4s,transform 0.4s,border-color 0.4s,box-shadow 0.4s;cursor:pointer;opacity:0;transform:translateY(48px)}
+.poem-card.revealed{opacity:1;transform:translateY(0)}
+.poem-card:hover{background:var(--glass-hover);border-color:var(--amber-soft);transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,24,20,0.06)}
+.poem-card::before{content:'';position:absolute;top:-1px;left:2rem;right:2rem;height:1px;background:linear-gradient(90deg,transparent,var(--amber),transparent);opacity:0;transition:opacity 0.4s,left 0.4s,right 0.4s;pointer-events:none}
+.poem-card:hover::before{opacity:0.5;left:0.5rem;right:0.5rem}
+.poem-number{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:400;line-height:1;color:var(--amber-soft);margin-bottom:0.5rem;transition:color 0.3s}
+.poem-card:hover .poem-number{color:var(--amber)}
+.poem-icon{margin-bottom:1rem;display:inline-block;width:24px;height:24px;color:var(--amber);opacity:0.4;transition:opacity 0.3s,transform 0.3s}
+.poem-card:hover .poem-icon{opacity:0.7;transform:scale(1.1)}
+.poem-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.75rem;line-height:1.25}
+.poem-card h3 a{color:var(--ink);text-decoration:none;transition:color 0.3s}
+.poem-card:hover h3 a{color:var(--amber)}
+.poem-tagline{font-family:'Crimson Pro',serif;font-size:0.95rem;font-style:italic;color:var(--charcoal);opacity:0.6;margin-bottom:0.75rem}
+.poem-excerpt{font-family:'Crimson Pro',serif;font-size:0.92rem;line-height:1.7;color:var(--charcoal);margin-bottom:1.25rem}
+.poem-quote{font-family:'EB Garamond',serif;font-size:1rem;font-style:italic;color:var(--amber);padding:1rem;background:linear-gradient(135deg,var(--amber-dim),transparent);border-left:2px solid var(--amber);margin-top:auto;line-height:1.6}
+.poem-link{display:inline-flex;align-items:center;gap:0.5rem;font-family:'Crimson Pro',serif;font-size:0.88rem;font-weight:500;color:var(--charcoal);text-decoration:none;margin-top:1.25rem;letter-spacing:0.5px;transition:color 0.3s,gap 0.3s}
+.poem-link svg{width:14px;height:14px;transition:transform 0.3s}
+.poem-link:hover{color:var(--amber);gap:0.75rem}
+.poem-link:hover svg{transform:translateX(3px)}
+
+.pull-quote-section{padding:5rem 6rem;background:var(--cream);text-align:center;position:relative;border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);overflow:hidden}
+.pull-quote-section::before,.pull-quote-section::after{content:'"';font-family:'Playfair Display',serif;font-size:10rem;color:var(--amber);opacity:0.06;position:absolute;line-height:1;pointer-events:none}
+.pull-quote-section::before{top:-1rem;left:3rem}
+.pull-quote-section::after{bottom:-3rem;right:3rem;transform:rotate(180deg)}
+.pull-quote{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.5vw,2.5rem);font-style:italic;color:var(--ink);max-width:720px;margin:0 auto;line-height:1.45}
+.pull-quote-author{font-family:'Crimson Pro',serif;font-size:0.85rem;color:var(--amber);margin-top:1.5rem;letter-spacing:3px;text-transform:uppercase}
+.pull-quote-divider{width:32px;height:1px;background:var(--amber-soft);margin:1.5rem auto}
+
+.about{padding:7rem 6rem;display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.about-content h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:400;margin-bottom:0.5rem}
+.about-content .subtitle{font-family:'Crimson Pro',serif;font-size:0.85rem;color:var(--amber);letter-spacing:2px;text-transform:uppercase;margin-bottom:2rem}
+.about-content p{font-family:'Crimson Pro',serif;font-size:1rem;line-height:1.8;color:var(--charcoal);margin-bottom:1.25rem}
+.about-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.about-frame{width:300px;height:400px;background:var(--cream);border:1px solid var(--glass-border);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:transform 0.4s,box-shadow 0.4s}
+.about-frame:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(26,24,20,0.06)}
+.about-frame::before{content:'';position:absolute;inset:12px;border:1px solid var(--amber-soft);transition:inset 0.4s}
+.about-frame:hover::before{inset:8px}
+.about-frame-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.about-frame-inner svg{width:48px;height:48px;color:var(--amber);opacity:0.3}
+.about-frame-inner span{font-family:'EB Garamond',serif;font-size:1rem;font-style:italic;color:var(--charcoal);opacity:0.5;letter-spacing:1px}
+
+.info{padding:5rem 6rem;background:var(--cream);border-top:1px solid var(--glass-border);position:relative;z-index:1}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.info-card{background:var(--parchment);border:1px solid var(--glass-border);padding:2rem;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s}
+.info-card:hover{border-color:var(--amber-soft);transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,24,20,0.04)}
+.info-card-icon{width:28px;height:28px;color:var(--amber);margin-bottom:1rem;opacity:0.5}
+.info-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;margin-bottom:1rem;color:var(--ink)}
+.info-card p{font-family:'Crimson Pro',serif;font-size:0.92rem;line-height:1.7;color:var(--charcoal);margin-bottom:1rem}
+.info-list{list-style:none}
+.info-list li{font-family:'Crimson Pro',serif;font-size:0.88rem;color:var(--charcoal);padding:0.35rem 0;display:flex;align-items:flex-start;gap:0.65rem}
+.info-list li svg{width:12px;height:12px;flex-shrink:0;margin-top:3px}
+.info-list li .check{color:var(--amber)}
+.info-list li .cross{color:var(--dusty-rose)}
+.contact-item{display:flex;align-items:center;gap:0.65rem;font-family:'Crimson Pro',serif;font-size:0.92rem;color:var(--charcoal);margin-bottom:0.65rem}
+.contact-item svg{width:16px;height:16px;color:var(--amber);opacity:0.5;flex-shrink:0}
+.contact-item a{color:var(--amber);text-decoration:none;transition:color 0.3s}
+.contact-item a:hover{color:var(--ink)}
+
+.divider{text-align:center;padding:1.5rem 0;opacity:0.2;display:flex;align-items:center;justify-content:center;gap:1rem}
+.divider-line{width:40px;height:1px;background:var(--amber)}
+.divider-dot{width:4px;height:4px;border-radius:50%;background:var(--amber)}
+
+footer{padding:3rem 6rem;text-align:center;position:relative;z-index:1;border-top:1px solid var(--glass-border)}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ink);margin-bottom:0.5rem}
+.footer-text{font-family:'Crimson Pro',serif;font-size:0.92rem;color:var(--charcoal);opacity:0.6;margin-bottom:0.5rem}
+.footer-copyright{font-family:'Crimson Pro',serif;font-size:0.8rem;color:var(--charcoal);opacity:0.5;margin-top:1.25rem}
+
+@media(max-width:1200px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:8rem 3rem 4rem}
+  .scroll-indicator{left:3rem}
+  .about{grid-template-columns:1fr;gap:3rem}
+  .info-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  nav{padding:1.25rem 2rem}
+  nav.scrolled{padding:0.85rem 2rem}
+  .nav-links{display:none}
+  .hero-left{padding:6rem 2rem 3rem}
+  .scroll-indicator{left:2rem}
+  .poems{padding:4rem 2rem}
+  .poems-grid{grid-template-columns:1fr}
+  .pull-quote-section{padding:3rem 2rem}
+  .about{padding:4rem 2rem}
+  .about-frame{width:240px;height:320px}
+  .info{padding:3rem 2rem}
+  .info-grid{grid-template-columns:1fr}
+  footer{padding:2.5rem 2rem}
+}
+@media(max-width:480px){
+  .hero-title{font-size:2.5rem}
+  .poem-card{padding:1.5rem}
+  .poem-number{font-size:2rem}
+  .pull-quote{font-size:1.3rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <a href="#" class="nav-logo">M. A. Salehin</a>
-        <ul class="nav-links">
-            <li><a href="#poems">Poems</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#license">License</a></li>
-            <li><a href="#connect">Connect</a></li>
-        </ul>
-    </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-left">
-            <span class="hero-tag">Poetry Collection</span>
-            <h1 class="hero-title">Words from<br><em>the Soul</em></h1>
-            <p class="hero-quote">
-                "Poetry is the word of soul, that can express a meaning beyond words."
-            </p>
-            <span class="hero-author">— Md Abu Salehin</span>
-            <div class="scroll-indicator">
-                <span class="scroll-line"></span>
-                <span>Scroll to explore</span>
-            </div>
-        </div>
-        <div class="hero-right">
-            <div class="hero-illustration">
-                <div class="quill">✒</div>
-                <div class="book-stack">
-                    <div class="book"></div>
-                    <div class="book"></div>
-                    <div class="book"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="bg-glow"></div>
+<div class="bg-glow"></div>
 
-    <!-- Poems Section -->
-    <section id="poems" class="poems-section">
-        <div class="section-header">
-            <h2 class="section-title">The Poems</h2>
-            <span class="section-count">6 Works</span>
-        </div>
+<nav id="navbar">
+<a href="#" class="nav-logo">M. A. Salehin</a>
+<ul class="nav-links">
+<li><a href="#poems">Poems</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#connect">Connect</a></li>
+</ul>
+</nav>
 
-        <div class="poems-grid">
-            <article class="poem-card">
-                <div class="poem-number">01</div>
-                <div class="poem-icon">🧠</div>
-                <h3><a href="./the-thoughts-of-a-thought.html">The Thoughts of a Thought</a></h3>
-                <p class="poem-tagline">A philosophical journey between the thought and the writer</p>
-                <p class="poem-excerpt">
-                    Dive into a metaphysical dialogue exploring the eternal question: Hero or villain?
-                    This poem unravels the paradox of impossible choices.
-                </p>
-                <div class="poem-quote">
-                    A thought is just a fiction. It's nothing to worry about.
-                </div>
-                <a href="./the-thoughts-of-a-thought.html" class="poem-link">
-                    Read Poem →
-                </a>
-            </article>
+<section class="hero">
+<div class="hero-left">
+<span class="hero-tag">Poetry Collection</span>
+<h1 class="hero-title">Words from<br><span class="italic">the Soul</span></h1>
+<p class="hero-quote">"Poetry is the word of soul, that can express a meaning beyond words."</p>
+<span class="hero-author">— Md Abu Salehin</span>
+<div class="scroll-indicator"><span class="scroll-line"></span><span>Scroll</span></div>
+</div>
+<div class="hero-right">
+<div class="hero-visual">
+<div class="hero-ring"></div>
+<div class="hero-ring"></div>
+<div class="hero-ring"></div>
+<div class="hero-float"></div>
+<div class="hero-float"></div>
+<div class="hero-float"></div>
+<div class="hero-glyph">&#x201C;</div>
+<div class="hero-glyph">&#x201D;</div>
+</div>
+</div>
+</section>
 
-            <article class="poem-card">
-                <div class="poem-number">02</div>
-                <div class="poem-icon">⚖</div>
-                <h3><a href="./law-unnecessary-or-unused.html">Law - Unnecessary or Unused</a></h3>
-                <p class="poem-tagline">A philosophical dialogue on the nature of law</p>
-                <p class="poem-excerpt">
-                    A traveler meets a wise old man who reveals a profound truth about law:
-                    whether it saves the good or punishes the bad.
-                </p>
-                <div class="poem-quote">
-                    Law is a necessary decoration that's never used.
-                </div>
-                <a href="./law-unnecessary-or-unused.html" class="poem-link">
-                    Read Poem →
-                </a>
-            </article>
+<section id="poems" class="poems">
+<div class="section-header">
+<div class="section-number">&#x2015; The Works</div>
+<h2 class="section-title">Seven <span class="italic">Poems</span></h2>
+</div>
+<div class="poems-grid">
+<article class="poem-card" data-reveal>
+<div class="poem-number">01</div>
+<div class="poem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/><path d="M17 4a2 2 0 0 0 -2 2v4.5"/><path d="M19 4a2 2 0 0 1 2 2v4.5"/><path d="M14.5 10.5h-4"/></svg></div>
+<h3><a href="./the-thoughts-of-a-thought.html">The Thoughts of a Thought</a></h3>
+<p class="poem-tagline">A philosophical journey between the thought and the writer</p>
+<p class="poem-excerpt">A metaphysical dialogue exploring the eternal question: Hero or villain? This poem unravels the paradox of impossible choices.</p>
+<div class="poem-quote">A thought is just a fiction. It's nothing to worry about.</div>
+<a href="./the-thoughts-of-a-thought.html" class="poem-link">Read<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+</article>
+<article class="poem-card" data-reveal>
+<div class="poem-number">02</div>
+<div class="poem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 21h8"/><path d="M8 10l4-7 4 7"/><path d="M8 10h8"/></svg></div>
+<h3><a href="./law-unnecessary-or-unused.html">Law &mdash; Unnecessary or Unused</a></h3>
+<p class="poem-tagline">A philosophical dialogue on the nature of law</p>
+<p class="poem-excerpt">A traveler meets a wise old man who reveals a profound truth about law: whether it saves the good or punishes the bad.</p>
+<div class="poem-quote">Law is a necessary decoration that's never used.</div>
+<a href="./law-unnecessary-or-unused.html" class="poem-link">Read<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+</article>
+<article class="poem-card" data-reveal>
+<div class="poem-number">03</div>
+<div class="poem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg></div>
+<h3><a href="./a-late-return-or-not.html">A Late Return or Not</a></h3>
+<p class="poem-tagline">Where the heart becomes the courtroom</p>
+<p class="poem-excerpt">The mind is a court, two egos are lawyers, and the question of love stands as defendant.</p>
+<div class="poem-quote">The best thing at first may become the worst at last.</div>
+<a href="./a-late-return-or-not.html" class="poem-link">Read<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+</article>
+<article class="poem-card" data-reveal>
+<div class="poem-number">04</div>
+<div class="poem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5z"/><path d="M12 7c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5z"/><path d="M7 17c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5z"/></svg></div>
+<h3><a href="./seas-of-past.html">Seas of Past</a></h3>
+<p class="poem-tagline">A reflection on time, age, and the ironic cycles of life</p>
+<p class="poem-excerpt">Travel through the seas of time&mdash;from old age to youth to childhood&mdash;and witness the beautiful irony of human desire.</p>
+<div class="poem-quote">The cycle of life is just like a joke that no one laughs at.</div>
+<a href="./seas-of-past.html" class="poem-link">Read<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+</article>
+<article class="poem-card" data-reveal>
+<div class="poem-number">05</div>
+<div class="poem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 7 7 7 7"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 17 7 17 7"/><path d="M4 22h16"/><path d="M10 22V8l-4 2"/><path d="M14 22V8l4 2"/></svg></div>
+<h3><a href="./the-staircase-of-wisdom.html">The Staircase of Wisdom</a></h3>
+<p class="poem-tagline">Life's stages divided by wisdom</p>
+<p class="poem-excerpt">The more one knows, the more humble knowledge makes him. A journey through the three steps of life's staircase.</p>
+<div class="poem-quote">Life is the staircase of three steps, divided by wisdom.</div>
+<a href="./the-staircase-of-wisdom.html" class="poem-link">Read<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+</article>
+<article class="poem-card" data-reveal>
+<div class="poem-number">06</div>
+<div class="poem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+<h3><a href="./unknown-crimson.html">Unknown Crimson</a></h3>
+<p class="poem-tagline">A love poem to a muse never met</p>
+<p class="poem-excerpt">Under the crimson moon, love blooms for someone who exists beyond reality&mdash;a mysterious figure who lives in the mind and heart.</p>
+<div class="poem-quote">She was the one I never met, nor do I know her name.</div>
+<a href="./unknown-crimson.html" class="poem-link">Read<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+</article>
+<article class="poem-card" data-reveal>
+<div class="poem-number">07</div>
+<div class="poem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+<h3><a href="./the-crimson-of-shining-gold-and-mud.html">The Crimson of Shining Gold and Mud</a></h3>
+<p class="poem-tagline">Two paths, one search, an eternal question</p>
+<p class="poem-excerpt">A traveler walks two roads&mdash;one of shining gold, one of humble mud&mdash;searching for the crimson of true humanity, only to find it may never be in the path itself.</p>
+<div class="poem-quote">But the crimson I wanted to find, shouldn't it be in either the gold or the mud?</div>
+<a href="./the-crimson-of-shining-gold-and-mud.html" class="poem-link">Read<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+</article>
+</div>
+</section>
 
-            <article class="poem-card">
-                <div class="poem-number">03</div>
-                <div class="poem-icon">🏛</div>
-                <h3><a href="./a-late-return-or-not.html">A Late Return or Not</a></h3>
-                <p class="poem-tagline">Where the heart becomes the courtroom</p>
-                <p class="poem-excerpt">
-                    The mind is a court, two egos are lawyers, and the question of love
-                    stands as defendant.
-                </p>
-                <div class="poem-quote">
-                    The best thing at first may become the worst at last.
-                </div>
-                <a href="./a-late-return-or-not.html" class="poem-link">
-                    Read Poem →
-                </a>
-            </article>
+<section class="pull-quote-section">
+<p class="pull-quote">"Poetry is the word of soul,<br>that can express a meaning beyond words."</p>
+<div class="pull-quote-divider"></div>
+<p class="pull-quote-author">— Md Abu Salehin</p>
+</section>
 
-            <article class="poem-card">
-                <div class="poem-number">04</div>
-                <div class="poem-icon">🌊</div>
-                <h3><a href="./seas-of-past.html">Seas of Past</a></h3>
-                <p class="poem-tagline">A reflection on time, age, and the ironic cycles of life</p>
-                <p class="poem-excerpt">
-                    Travel through the seas of time—from old age to youth to childhood—
-                    and witness the beautiful irony of human desire.
-                </p>
-                <div class="poem-quote">
-                    The cycle of life is just like a joke that no one laughs at.
-                </div>
-                <a href="./seas-of-past.html" class="poem-link">
-                    Read Poem →
-                </a>
-            </article>
+<section id="about" class="about">
+<div class="about-content">
+<h2>About the Poet</h2>
+<p class="subtitle">Md Abu Salehin</p>
+<p>I am a writer who believes in the transformative power of poetry. Through my verses, I explore the complexities of human emotion, the absurdities of existence, and the quiet beauty of fleeting moments.</p>
+<p>Poetry, to me, is both a mirror and a window&mdash;a way to see myself more clearly while also offering others a glimpse into the universal experiences that connect us all.</p>
+<p>Each poem here is a fragment of my inner world, crafted with vulnerability and honesty. I invite you to wander through these words, to feel what I felt, and perhaps discover something about yourself along the way.</p>
+</div>
+<div class="about-visual">
+<div class="about-frame">
+<div class="about-frame-inner">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="M15 5l4 4"/></svg>
+<span>Poet &amp; Writer</span>
+</div>
+</div>
+</div>
+</section>
 
-            <article class="poem-card">
-                <div class="poem-number">05</div>
-                <div class="poem-icon">📚</div>
-                <h3><a href="./the-staircase-of-wisdom.html">The Staircase of Wisdom</a></h3>
-                <p class="poem-tagline">Life's stages divided by wisdom</p>
-                <p class="poem-excerpt">
-                    The more one knows, the more humble knowledge makes him.
-                    A journey through the three steps of life's staircase.
-                </p>
-                <div class="poem-quote">
-                    Life is the staircase of three steps, divided by wisdom.
-                </div>
-                <a href="./the-staircase-of-wisdom.html" class="poem-link">
-                    Read Poem →
-                </a>
-            </article>
+<section id="license" class="info">
+<div class="section-header">
+<div class="section-number">&#x2015; Details</div>
+<h2 class="section-title">License &amp; <span class="italic">Connect</span></h2>
+</div>
+<div class="info-grid">
+<div class="info-card">
+<div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-4a2 2 0 0 1 2-2h4"/><path d="M7 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="M7 4h10a2 2 0 0 1 2 2v12h-3"/><path d="M12 4v16"/></svg></div>
+<h3>License &amp; Usage</h3>
+<p>This collection is shared under <strong>CC BY-NC-ND 4.0</strong>.</p>
+<ul class="info-list">
+<li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Read and enjoy freely</li>
+<li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Share links to this collection</li>
+<li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Credit Md Abu Salehin as author</li>
+<li><svg class="cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg> No commercial use</li>
+<li><svg class="cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg> No derivatives</li>
+</ul>
+</div>
+<div id="connect" class="info-card">
+<div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/></svg></div>
+<h3>Connect</h3>
+<p>If any of these poems resonated with you, I'd love to hear from you.</p>
+<div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>Discord: <strong>gs_707</strong></span></div>
+<div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="https://mdsalehin.netlify.app" target="_blank">mdsalehin.netlify.app</a></div>
+</div>
+<div class="info-card">
+<div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+<h3>Support This Work</h3>
+<p>If you appreciate this poetry and would like to support the journey:</p>
+<ul class="info-list">
+<li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Star this repository on GitHub</li>
+<li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Share with others who love poetry</li>
+<li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Follow for more works coming soon</li>
+</ul>
+</div>
+</div>
+</section>
 
-            <article class="poem-card">
-                <div class="poem-number">06</div>
-                <div class="poem-icon">💫</div>
-                <h3><a href="./unknown-crimson.html">Unknown Crimson</a></h3>
-                <p class="poem-tagline">A love poem to a muse never met</p>
-                <p class="poem-excerpt">
-                    Under the crimson moon, love blooms for someone who exists beyond reality—
-                    a mysterious figure who lives in the mind and heart.
-                </p>
-                <div class="poem-quote">
-                    She was the one I never met, nor do I know her name.
-                </div>
-                <a href="./unknown-crimson.html" class="poem-link">
-                    Read Poem →
-                </a>
-            </article>
-        </div>
-    </section>
+<footer>
+<div class="divider"><span class="divider-line"></span><span class="divider-dot"></span><span class="divider-line"></span></div>
+<p class="footer-logo">Md Abu Salehin</p>
+<p class="footer-text">More poems coming soon</p>
+<p class="footer-copyright">&copy; 2025 Md Abu Salehin. All Rights Reserved.</p>
+</footer>
 
-    <!-- Pull Quote -->
-    <section class="pull-quote-section">
-        <p class="pull-quote">
-            "Poetry is the word of soul,<br>
-            that can express a meaning beyond words."
-        </p>
-        <p class="pull-quote-author">— Md Abu Salehin</p>
-    </section>
+<script>
+const navbar=document.getElementById('navbar');
+let ticking=false;
+window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{navbar.classList.toggle('scrolled',scrollY>80);ticking=false});ticking=true}},{passive:true});
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <h2>About the Poet</h2>
-            <p>
-                I am <strong>Md Abu Salehin</strong>, a writer who believes in the transformative
-                power of poetry. Through my verses, I explore the complexities of human emotion,
-                the absurdities of existence, and the quiet beauty of fleeting moments.
-            </p>
-            <p>
-                Poetry, to me, is both a mirror and a window—a way to see myself more clearly
-                while also offering others a glimpse into the universal experiences that connect us all.
-            </p>
-            <p>
-                Each poem here is a fragment of my inner world, crafted with vulnerability and honesty.
-                I invite you to wander through these words, to feel what I felt, and perhaps discover
-                something about yourself along the way.
-            </p>
-        </div>
-        <div class="about-image">
-            <div class="portrait-frame">
-                <span class="portrait-icon">✒</span>
-            </div>
-            <div class="portrait-decoration"></div>
-            <div class="portrait-decoration"></div>
-        </div>
-    </section>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 
-    <!-- Info Section -->
-    <section id="license" class="info-section">
-        <div class="info-grid">
-            <div class="info-card">
-                <h3><span>📜</span> License & Usage</h3>
-                <p>
-                    This collection is shared under the <strong>Creative Commons Attribution-NonCommercial-NoDerivatives 4.0</strong> license.
-                </p>
-                <ul class="info-list">
-                    <li>You can read and enjoy these poems freely</li>
-                    <li>You can share links to this collection</li>
-                    <li>You must credit Md Abu Salehin as the author</li>
-                    <li class="restricted">You cannot use these poems commercially</li>
-                    <li class="restricted">You cannot modify or create derivatives</li>
-                </ul>
-            </div>
-
-            <div id="connect" class="info-card">
-                <h3><span>💭</span> Connect</h3>
-                <p>
-                    Poetry is a conversation between the writer and the reader. If any of these poems resonated with you, I'd love to hear from you.
-                </p>
-                <div class="contact-item">
-                    <span>🏢</span>
-                    <span>Discord: <strong>gs_707</strong></span>
-                </div>
-                <div class="contact-item">
-                    <span>🌐</span>
-                    <a href="https://mdsalehin.netlify.app" target="_blank">mdsalehin.netlify.app</a>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3><span>✨</span> Support This Work</h3>
-                <p>
-                    If you appreciate this poetry and would like to support the journey:
-                </p>
-                <ul class="info-list">
-                    <li>Star this repository on GitHub</li>
-                    <li>Share with others who love poetry</li>
-                    <li>Follow for more works coming soon</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="decorative-divider">✦ ✦ ✦</div>
-        <p class="footer-logo">Md Abu Salehin</p>
-        <p class="footer-text">More poems coming soon</p>
-        <p class="footer-copyright">© 2025 Md Abu Salehin. All Rights Reserved.</p>
-    </footer>
-
-    <script>
-        // Navigation scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for poem card animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 150);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        document.querySelectorAll('.poem-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Parallax effect for hero elements
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            const quill = document.querySelector('.quill');
-            if (quill && scrolled < window.innerHeight) {
-                quill.style.transform = `translateY(${-scrolled * 0.1}px) rotate(${-15 + scrolled * 0.02}deg)`;
-            }
-        });
-    </script>
+const ro=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('revealed'),i*80);ro.unobserve(e.target)}})},{threshold:0.06});
+document.querySelectorAll('[data-reveal]').forEach(el=>ro.observe(el));
+</script>
 </body>
 </html>
