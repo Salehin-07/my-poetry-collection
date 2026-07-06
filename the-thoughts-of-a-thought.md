@@ -42,7 +42,7 @@ I don't know what to call myself,
 
 Good or bad?" 
 
-I would choose the former.
+As I would choose the former.
 
 The voice again said, "So, you choose the villain?
 
