@@ -1,371 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unknown Crimson | Md Abu Salehin</title>
-    <meta name="description" content="A love poem to a muse never met by Md Abu Salehin.">
-    <link rel="icon" type="image/x-icon" href="./logo.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unknown Crimson | Md Abu Salehin</title>
+<meta name="description" content="A love poem to a muse never met by Md Abu Salehin.">
+<link rel="icon" type="image/x-icon" href="./logo.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1a1814;--parchment:#f7f3eb;--cream:#ebe5d9;--amber:#c9a227;--amber-dim:rgba(201,162,39,0.08);--amber-soft:rgba(201,162,39,0.12);--charcoal:#2d2a26;--sage:#6b7c6b;--glass:rgba(255,255,255,0.7);--glass-border:rgba(45,42,38,0.1)}
+html{scroll-behavior:smooth}
+body{font-family:'Crimson Pro',Georgia,serif;background:var(--parchment);color:var(--ink);line-height:1.65;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");opacity:0.02;pointer-events:none;z-index:999;mix-blend-mode:multiply}
+.bg-glow{position:fixed;top:-30%;left:-20%;width:80%;height:80%;background:radial-gradient(circle,rgba(201,162,39,0.04),transparent 70%);pointer-events:none;z-index:0}
+.bg-glow:nth-child(2){top:auto;bottom:-20%;right:-10%;left:auto;width:60%;height:60%;background:radial-gradient(circle,rgba(166,127,124,0.05),transparent 70%)}
 
-        :root {
-            --crimson: #b91c1c;
-            --crimson-deep: #7f1d1d;
-            --crimson-light: #ef4444;
-            --crimson-glow: rgba(185, 28, 28, 0.4);
-            --night: #0a0508;
-            --moon: #fef3c7;
-            --rose: #fda4af;
-        }
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background 0.4s,padding 0.4s}
+nav.scrolled{background:rgba(247,243,235,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);padding:1rem 3rem}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ink);text-decoration:none;letter-spacing:0.5px;transition:color 0.3s}
+.nav-logo:hover{color:var(--amber)}
+.nav-back{font-family:'Crimson Pro',serif;font-size:0.9rem;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.3s}
+.nav-back:hover{color:var(--amber)}
+.nav-back svg{width:14px;height:14px}
 
-        html { scroll-behavior: smooth; }
+.content{position:relative;z-index:10;max-width:700px;margin:0 auto;padding:6rem 2rem 3rem}
+.header{text-align:center;padding:3rem 0 3rem}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:400;color:var(--ink);line-height:1.08;margin-bottom:0.75rem}
+.header .subtitle{font-family:'EB Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--charcoal);opacity:0.6}
+.header .author-line{font-family:'Crimson Pro',serif;font-size:0.82rem;color:var(--sage);letter-spacing:2px;text-transform:uppercase;margin-top:0.75rem}
+.divider{text-align:center;padding:1.5rem 0;opacity:0.2;display:flex;align-items:center;justify-content:center;gap:1rem}
+.divider-line{width:40px;height:1px;background:var(--amber)}
+.divider-dot{width:4px;height:4px;border-radius:50%;background:var(--amber)}
 
-        body {
-            font-family: 'Cormorant Garamond', serif;
-            background: var(--night);
-            color: var(--moon);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+.poem{padding:2rem 0;max-width:600px;margin:0 auto}
+.poem p{font-family:'Crimson Pro',serif;font-size:1.15rem;line-height:1.8;color:var(--charcoal);margin-bottom:0.5rem}
+.poem .break{height:1.5rem}
+.poem .em{font-family:'EB Garamond',serif;font-style:italic}
 
-        /* Crimson Glow Background */
-        .crimson-bg {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            background:
-                radial-gradient(ellipse at 50% 30%, rgba(185, 28, 28, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 20% 80%, rgba(127, 29, 29, 0.1) 0%, transparent 40%),
-                radial-gradient(ellipse at 80% 60%, rgba(239, 68, 68, 0.08) 0%, transparent 40%);
-        }
+footer{padding:3rem 6rem;text-align:center;position:relative;z-index:1;border-top:1px solid var(--glass-border)}
+.footer-text{font-family:'Crimson Pro',serif;font-size:0.85rem;color:var(--charcoal);opacity:0.5}
 
-        /* Floating Petals */
-        .petals {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .petal {
-            position: absolute;
-            font-size: 1.5rem;
-            animation: fall 15s infinite linear;
-            opacity: 0.4;
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.4; }
-            90% { opacity: 0.4; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-        }
-
-        /* Moon */
-        .moon {
-            position: fixed;
-            top: 10%;
-            right: 15%;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle at 30% 30%, var(--moon), #d4a574);
-            border-radius: 50%;
-            box-shadow:
-                0 0 60px rgba(254, 243, 199, 0.4),
-                0 0 120px rgba(185, 28, 28, 0.3),
-                inset -20px -10px 30px rgba(127, 29, 29, 0.3);
-            z-index: 2;
-            animation: moon-glow 8s ease-in-out infinite;
-        }
-
-        @keyframes moon-glow {
-            0%, 100% { box-shadow: 0 0 60px rgba(254, 243, 199, 0.4), 0 0 120px rgba(185, 28, 28, 0.3); }
-            50% { box-shadow: 0 0 80px rgba(254, 243, 199, 0.6), 0 0 160px rgba(185, 28, 28, 0.4); }
-        }
-
-        .moon::after {
-            content: '';
-            position: absolute;
-            top: 20%;
-            left: 25%;
-            width: 20px;
-            height: 20px;
-            background: rgba(127, 29, 29, 0.2);
-            border-radius: 50%;
-        }
-
-        /* Content */
-        .content {
-            position: relative;
-            z-index: 10;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 8rem 0 4rem;
-            position: relative;
-        }
-
-        .header-icon {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            animation: pulse-heart 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse-heart {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 400;
-            color: var(--crimson-light);
-            text-shadow: 0 0 40px var(--crimson-glow);
-            margin-bottom: 1rem;
-            letter-spacing: 3px;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            font-style: italic;
-            opacity: 0.7;
-            color: var(--rose);
-        }
-
-        /* Opening */
-        .opening {
-            text-align: center;
-            padding: 4rem 0;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .opening::before,
-        .opening::after {
-            content: '❧';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.5rem;
-            color: var(--crimson);
-            opacity: 0.5;
-        }
-
-        .opening::before { top: 0; }
-        .opening::after { bottom: 0; transform: translateX(-50%) rotate(180deg); }
-
-        .opening p {
-            font-size: 1.8rem;
-            font-style: italic;
-            line-height: 2;
-        }
-
-        /* Verses */
-        .verse {
-            padding: 2rem 0;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .verse.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .verse p {
-            font-size: 1.4rem;
-            line-height: 2.2;
-            white-space: pre-wrap;
-        }
-
-        .verse.stanza {
-            margin: 3rem 0;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(185, 28, 28, 0.1), transparent);
-            border-radius: 20px;
-            border: 1px solid rgba(185, 28, 28, 0.2);
-        }
-
-        /* The Declaration */
-        .declaration {
-            text-align: center;
-            padding: 5rem 0;
-            margin: 3rem 0;
-        }
-
-        .declaration p {
-            font-size: 1.3rem;
-            line-height: 2.2;
-            white-space: pre-wrap;
-        }
-
-        .declaration .final {
-            margin-top: 2rem;
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.8rem;
-            color: var(--crimson-light);
-        }
-
-        /* Divider */
-        .divider {
-            text-align: center;
-            padding: 2rem 0;
-            font-size: 1.5rem;
-            color: var(--crimson);
-            opacity: 0.5;
-        }
-
-        /* Footer quote */
-        .footer-quote {
-            text-align: center;
-            padding: 4rem 0;
-            margin-top: 3rem;
-            border-top: 1px solid rgba(185, 28, 28, 0.2);
-        }
-
-        .footer-quote p {
-            font-size: 1rem;
-            opacity: 0.5;
-            font-style: italic;
-        }
-
-        /* Back Link */
-        .back-link {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--moon);
-            text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0.6;
-            transition: opacity 0.3s;
-            background: rgba(10, 5, 8, 0.6);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            border: 1px solid rgba(185, 28, 28, 0.3);
-        }
-
-        .back-link:hover { opacity: 1; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .content { padding: 2rem 1.5rem; }
-            .header { padding: 5rem 0 2rem; }
-            h1 { font-size: 2.5rem; }
-            .opening p { font-size: 1.4rem; }
-            .verse p { font-size: 1.2rem; }
-            .moon { width: 80px; height: 80px; right: 10%; }
-            .back-link { top: 1rem; left: 1rem; }
-        }
-    </style>
+@media(max-width:768px){
+  nav{padding:1.25rem 2rem}
+  nav.scrolled{padding:0.85rem 2rem}
+  .content{padding:5rem 1.5rem 2rem}
+  .header{padding:2rem 0}
+  .poem p{font-size:1.05rem}
+  footer{padding:2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+}
+</style>
 </head>
 <body>
-    <div class="crimson-bg"></div>
-    <div class="moon"></div>
-    <div class="petals" id="petals"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow"></div>
 
-    <a href="./index.html" class="back-link">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        Back to Collection
-    </a>
+<nav id="navbar">
+<a href="./index.html" class="nav-logo">M. A. Salehin</a>
+<a href="./index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>Back to Poems</a>
+</nav>
 
-    <div class="content">
-        <header class="header">
-            <div class="header-icon">🌙</div>
-            <h1>Unknown Crimson</h1>
-            <p class="subtitle">A love poem to a muse never met</p>
-            <p class="subtitle" style="margin-top: 0.5rem; font-size: 0.9rem;">By Md Abu Salehin</p>
-        </header>
+<div class="content">
+<header class="header">
+<h1>Unknown Crimson</h1>
+<p class="subtitle">A love poem to a muse never met</p>
+<p class="author-line">By Md Abu Salehin</p>
+</header>
 
-        <div class="opening">
-            <p>It was the night of the crimson moon,</p>
-            <p>I fell in love with her.</p>
-        </div>
+<div class="divider"><span class="divider-line"></span><span class="divider-dot"></span><span class="divider-line"></span></div>
 
-        <div class="verse stanza">
-            <p>The gradient glow she makes</p>
-            <p>Is far greater than the mighty sun's.</p>
-        </div>
+<div class="poem">
+<p>It was the night of the crimson moon,</p>
+<p>I fell in love with her.</p>
+<div class="break"></div>
 
-        <div class="verse">
-            <p>Her rage could burn the fire,</p>
-            <p>Yet nothing looked more beautiful than her.</p>
-        </div>
+<p>The gradient glow she makes</p>
+<p>Is far greater than the mighty sun's.</p>
+<div class="break"></div>
 
-        <div class="verse">
-            <p>Her smile was so sweet</p>
-            <p>Even the sugar itself would feel shy around her.</p>
-        </div>
+<p>Her rage could burn the fire,</p>
+<p>Yet nothing looked more beautiful than her.</p>
+<div class="break"></div>
 
-        <div class="divider">❧</div>
+<p>Her smile was so sweet</p>
+<p>Even the sugar itself would feel shy around her.</p>
+<div class="break"></div>
 
-        <div class="declaration">
-            <p>She was the one I never met,</p>
-            <p>Nor do I know her name,</p>
-            <p>Yet she followed me in my mind</p>
-            <p>And became the crimson unknown.</p>
-            <div class="final">
-                She became my crimson moon.
-            </div>
-        </div>
+<p>She was the one I never met,</p>
+<p>Nor do I know her name,</p>
+<p>Yet she followed me in my mind</p>
+<p>And became the crimson unknown.</p>
+</div>
+</div>
 
-        <div class="footer-quote">
-            <p>© Md Abu Salehin. All rights reserved.</p>
-        </div>
-    </div>
+<footer>
+<p class="footer-text">&copy; Md Abu Salehin. All rights reserved.</p>
+</footer>
 
-    <script>
-        // Create falling petals
-        const petalsContainer = document.getElementById('petals');
-        const petalSymbols = ['🌹', '🥀', '✨', '💫'];
-
-        for (let i = 0; i < 15; i++) {
-            const petal = document.createElement('div');
-            petal.className = 'petal';
-            petal.textContent = petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
-            petal.style.left = Math.random() * 100 + '%';
-            petal.style.animationDelay = Math.random() * 15 + 's';
-            petal.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            petal.style.fontSize = (Math.random() * 1 + 0.8) + 'rem';
-            petalsContainer.appendChild(petal);
-        }
-
-        // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.2 });
-
-        document.querySelectorAll('.verse').forEach(verse => {
-            observer.observe(verse);
-        });
-
-        // Parallax moon
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            const moon = document.querySelector('.moon');
-            moon.style.transform = `translateY(${scrolled * 0.1}px)`;
-        });
-    </script>
+<script>
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',scrollY>80)},{passive:true});
+</script>
 </body>
 </html>

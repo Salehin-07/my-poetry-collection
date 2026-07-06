@@ -1,454 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Law - Unnecessary or Unused | Md Abu Salehin</title>
-    <meta name="description" content="A philosophical dialogue on the nature of law by Md Abu Salehin.">
-    <link rel="icon" type="image/x-icon" href="./logo.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Law &mdash; Unnecessary or Unused | Md Abu Salehin</title>
+<meta name="description" content="A philosophical dialogue on the nature of law by Md Abu Salehin.">
+<link rel="icon" type="image/x-icon" href="./logo.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1a1814;--parchment:#f7f3eb;--cream:#ebe5d9;--amber:#c9a227;--amber-dim:rgba(201,162,39,0.08);--amber-soft:rgba(201,162,39,0.12);--charcoal:#2d2a26;--sage:#6b7c6b;--glass:rgba(255,255,255,0.7);--glass-border:rgba(45,42,38,0.1)}
+html{scroll-behavior:smooth}
+body{font-family:'Crimson Pro',Georgia,serif;background:var(--parchment);color:var(--ink);line-height:1.65;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");opacity:0.02;pointer-events:none;z-index:999;mix-blend-mode:multiply}
+.bg-glow{position:fixed;top:-30%;left:-20%;width:80%;height:80%;background:radial-gradient(circle,rgba(201,162,39,0.04),transparent 70%);pointer-events:none;z-index:0}
+.bg-glow:nth-child(2){top:auto;bottom:-20%;right:-10%;left:auto;width:60%;height:60%;background:radial-gradient(circle,rgba(166,127,124,0.05),transparent 70%)}
 
-        :root {
-            --parchment: #f5f0e1;
-            --ink: #1a1612;
-            --ink-light: #4a4239;
-            --gold: #b8860b;
-            --seal-red: #8b0000;
-            --shadow: rgba(26, 22, 18, 0.3);
-        }
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background 0.4s,padding 0.4s}
+nav.scrolled{background:rgba(247,243,235,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);padding:1rem 3rem}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ink);text-decoration:none;letter-spacing:0.5px;transition:color 0.3s}
+.nav-logo:hover{color:var(--amber)}
+.nav-back{font-family:'Crimson Pro',serif;font-size:0.9rem;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.3s}
+.nav-back:hover{color:var(--amber)}
+.nav-back svg{width:14px;height:14px}
 
-        html { scroll-behavior: smooth; }
+.content{position:relative;z-index:10;max-width:700px;margin:0 auto;padding:6rem 2rem 3rem}
+.header{text-align:center;padding:3rem 0 3rem}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:400;color:var(--ink);line-height:1.08;margin-bottom:0.75rem}
+.header .subtitle{font-family:'EB Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--charcoal);opacity:0.6}
+.header .author-line{font-family:'Crimson Pro',serif;font-size:0.82rem;color:var(--sage);letter-spacing:2px;text-transform:uppercase;margin-top:0.75rem}
+.divider{text-align:center;padding:1.5rem 0;opacity:0.2;display:flex;align-items:center;justify-content:center;gap:1rem}
+.divider-line{width:40px;height:1px;background:var(--amber)}
+.divider-dot{width:4px;height:4px;border-radius:50%;background:var(--amber)}
 
-        body {
-            font-family: 'Cormorant Garamond', serif;
-            background: linear-gradient(135deg, #e8e0d0 0%, var(--parchment) 50%, #d9cfc0 100%);
-            color: var(--ink);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+.poem{padding:2rem 0;max-width:600px;margin:0 auto}
+.poem p{font-family:'Crimson Pro',serif;font-size:1.15rem;line-height:1.8;color:var(--charcoal);margin-bottom:0.5rem}
+.poem .break{height:1.5rem}
+.poem .em{font-family:'EB Garamond',serif;font-style:italic}
 
-        /* Paper texture overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 0;
-        }
+footer{padding:3rem 6rem;text-align:center;position:relative;z-index:1;border-top:1px solid var(--glass-border)}
+.footer-text{font-family:'Crimson Pro',serif;font-size:0.85rem;color:var(--charcoal);opacity:0.5}
 
-        /* Aged edge effect */
-        .page-edge {
-            position: fixed;
-            inset: 0;
-            box-shadow:
-                inset 0 0 100px rgba(139, 0, 0, 0.05),
-                inset 0 0 200px rgba(139, 0, 0, 0.03);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Content */
-        .content {
-            position: relative;
-            z-index: 10;
-            max-width: 750px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 6rem 0 4rem;
-            position: relative;
-        }
-
-        .scroll-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        h1 {
-            font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--ink);
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            font-style: italic;
-            color: var(--ink-light);
-        }
-
-        /* Decorative divider */
-        .divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin: 3rem 0;
-            color: var(--gold);
-            font-size: 1.2rem;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-            width: 60px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-
-        /* The Journey */
-        .journey {
-            padding: 2rem 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .journey.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .journey p {
-            font-size: 1.25rem;
-            line-height: 2.1;
-            white-space: pre-wrap;
-        }
-
-        /* The Old Man */
-        .old-man {
-            background: linear-gradient(135deg, rgba(184, 134, 11, 0.08), transparent);
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
-            position: relative;
-        }
-
-        .old-man::before {
-            content: '⚖';
-            position: absolute;
-            top: -1rem;
-            left: 2rem;
-            background: var(--parchment);
-            padding: 0 1rem;
-            font-size: 1.5rem;
-            color: var(--gold);
-        }
-
-        /* Dialogue */
-        .dialogue {
-            padding: 1.5rem 2rem;
-            margin: 1.5rem 0;
-            border-left: 3px solid var(--gold);
-            background: rgba(184, 134, 11, 0.05);
-            font-style: italic;
-        }
-
-        .dialogue p {
-            font-size: 1.2rem;
-            line-height: 1.9;
-            white-space: pre-wrap;
-        }
-
-        /* Question boxes */
-        .question {
-            text-align: center;
-            padding: 2rem;
-            margin: 2rem 0;
-            font-size: 1.3rem;
-            font-style: italic;
-            color: var(--ink-light);
-            border: 2px dashed rgba(184, 134, 11, 0.3);
-            border-radius: 12px;
-        }
-
-        /* The Revelation */
-        .revelation {
-            text-align: center;
-            padding: 4rem 2rem;
-            margin: 3rem 0;
-            background: linear-gradient(135deg, rgba(139, 0, 0, 0.05), transparent);
-            border-top: 1px solid rgba(139, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(139, 0, 0, 0.2);
-        }
-
-        .revelation p {
-            font-size: 1.3rem;
-            line-height: 2;
-            white-space: pre-wrap;
-        }
-
-        .revelation .key-quote {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--seal-red);
-            margin: 1.5rem 0;
-        }
-
-        /* The Ending */
-        .ending {
-            text-align: center;
-            padding: 4rem 0;
-            margin-top: 2rem;
-        }
-
-        .ending p {
-            font-size: 1.25rem;
-            line-height: 2;
-            white-space: pre-wrap;
-            color: var(--ink-light);
-        }
-
-        .ending .final {
-            margin-top: 2rem;
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--ink);
-            padding: 1.5rem 2rem;
-            background: rgba(184, 134, 11, 0.1);
-            border-radius: 12px;
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            display: inline-block;
-        }
-
-        /* Back Link */
-        .back-link {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--ink);
-            text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0.6;
-            transition: opacity 0.3s;
-            background: var(--parchment);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            box-shadow: 2px 2px 10px var(--shadow);
-        }
-
-        .back-link:hover { opacity: 1; }
-
-        /* Decorative seal */
-        .seal {
-            width: 80px;
-            height: 80px;
-            margin: 3rem auto;
-            background: linear-gradient(135deg, var(--seal-red), #660000);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--parchment);
-            box-shadow: 0 4px 20px var(--shadow);
-            position: relative;
-        }
-
-        .seal::before {
-            content: '';
-            position: absolute;
-            inset: 5px;
-            border: 2px solid rgba(245, 240, 225, 0.3);
-            border-radius: 50%;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 3rem;
-            border-top: 1px solid rgba(184, 134, 11, 0.2);
-        }
-
-        .footer p {
-            font-size: 0.9rem;
-            color: var(--ink-light);
-            font-style: italic;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .content { padding: 2rem 1.5rem; }
-            .header { padding: 5rem 0 2rem; }
-            h1 { font-size: 2rem; letter-spacing: 2px; }
-            .journey p { font-size: 1.1rem; }
-            .dialogue { padding: 1rem 1.5rem; }
-            .back-link { top: 1rem; left: 1rem; }
-        }
-    </style>
+@media(max-width:768px){
+  nav{padding:1.25rem 2rem}
+  nav.scrolled{padding:0.85rem 2rem}
+  .content{padding:5rem 1.5rem 2rem}
+  .header{padding:2rem 0}
+  .poem p{font-size:1.05rem}
+  footer{padding:2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+}
+</style>
 </head>
 <body>
-    <div class="page-edge"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow"></div>
 
-    <a href="./index.html" class="back-link">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        Back to Collection
-    </a>
+<nav id="navbar">
+<a href="./index.html" class="nav-logo">M. A. Salehin</a>
+<a href="./index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>Back to Poems</a>
+</nav>
 
-    <div class="content">
-        <header class="header">
-            <span class="scroll-icon">📜</span>
-            <h1>Law</h1>
-            <p class="subtitle">Unnecessary or Unused</p>
-            <p class="subtitle" style="margin-top: 0.5rem; font-size: 0.9rem;">By Md Abu Salehin</p>
-        </header>
+<div class="content">
+<header class="header">
+<h1>Law<br>&mdash; Unnecessary or Unused</h1>
+<p class="subtitle">A philosophical dialogue on the nature of law</p>
+<p class="author-line">By Md Abu Salehin</p>
+</header>
 
-        <div class="divider">⚖</div>
+<div class="divider"><span class="divider-line"></span><span class="divider-dot"></span><span class="divider-line"></span></div>
 
-        <section class="journey">
-            <p>I was on my way to find an answer,</p>
-            <p style="margin-top: 0.5rem;">An answer of question,</p>
-            <p>That's hard to answer</p>
-            <p>Yet all should know.</p>
-        </section>
+<div class="poem">
+<p>I was on my way to find an answer,</p>
+<p>An answer of question,</p>
+<p>That's hard to answer</p>
+<p>Yet all should know.</p>
+<div class="break"></div>
 
-        <section class="journey">
-            <p>I found an old man.</p>
-            <p>He was as wise as an owl</p>
-            <p>And also as old as time.</p>
-            <p style="margin-top: 1.5rem;">I sat beside him and asked,</p>
-        </section>
+<p>I found an old man.</p>
+<p>He was as wise as an owl</p>
+<p>And also as old as time.</p>
+<p>I sat beside him and asked,</p>
+<div class="break"></div>
 
-        <div class="question">
-            "What is law?"
-        </div>
+<p class="em">"What is law?"</p>
+<div class="break"></div>
 
-        <section class="journey">
-            <p>He opened his eyes.</p>
-            <p>He told me to ask my heart.</p>
-        </section>
+<p>He opened his eyes.</p>
+<p>He told me to ask my heart.</p>
+<div class="break"></div>
 
-        <div class="old-man">
-            <div class="dialogue">
-                <p>I did that and my heart said,</p>
-                <p style="margin-top: 0.5rem;">"It's to save good people</p>
-                <p>That law exists?"</p>
-            </div>
-            <p style="margin-top: 1rem;">Again he told me ask to my brain.</p>
-            <div class="dialogue">
-                <p>This time I said,</p>
-                <p style="margin-top: 0.5rem;">"It's to punish the bad,</p>
-                <p>That's why law exists."</p>
-            </div>
-        </div>
+<p>I did that and my heart said,</p>
+<p class="em">"It's to save good people<br>That law exists?"</p>
+<div class="break"></div>
 
-        <section class="journey">
-            <p>The old man shook his body</p>
-            <p>And asked,</p>
-        </section>
+<p>Again he told me ask to my brain.</p>
+<p>This time I said,</p>
+<p class="em">"It's to punish the bad,<br>That's why law exists."</p>
+<div class="break"></div>
 
-        <div class="question">
-            "What's the difference between your answers?"
-        </div>
+<p>The old man shook his body</p>
+<p>And asked,</p>
+<div class="break"></div>
 
-        <section class="journey">
-            <p>I thought about that and strangely,</p>
-            <p>I found the both same.</p>
-            <p style="margin-top: 1.5rem;">He again spoke,</p>
-        </section>
+<p class="em">"What's the difference between your answers?"</p>
+<div class="break"></div>
 
-        <div class="dialogue">
-            <p>"It is law that is never used"</p>
-        </div>
+<p>I thought about that and strangely,</p>
+<p>I found the both same.</p>
+<p>He again spoke,</p>
+<div class="break"></div>
 
-        <section class="journey">
-            <p>I took a step back.</p>
-            <p style="margin-top: 1rem;">"How can law never be used",</p>
-            <p>I asked.</p>
-        </section>
+<p class="em">"It is law that is never used"</p>
+<div class="break"></div>
 
-        <div class="old-man">
-            <p>He replied Like you said,</p>
-            <div class="dialogue">
-                <p>"It is law that is to save good people</p>
-                <p>And to punish the bad.</p>
-                <p style="margin-top: 0.5rem;">But have you ever seen that?</p>
-            </div>
-        </div>
+<p>I took a step back.</p>
+<p>"How can law never be used",</p>
+<p>I asked.</p>
+<div class="break"></div>
 
-        <section class="journey">
-            <p>I thought for a second</p>
-            <p>But no clear answer came</p>
-        </section>
+<p>He replied, like you said,</p>
+<p class="em">"It is law that is to save good people<br>And to punish the bad.<br>But have you ever seen that?"</p>
+<div class="break"></div>
 
-        <section class="journey">
-            <p>He again spoke,</p>
-        </section>
+<p>I thought for a second</p>
+<p>But no clear answer came.</p>
+<p>He again spoke,</p>
+<div class="break"></div>
 
-        <div class="revelation">
-            <p>"Law is a necessary decoration</p>
-            <p>That's never used.</p>
-            <div class="key-quote">
-                If a ruler is bad,<br>
-                law is unused.<br>
-                And if the ruler is good,<br>
-                law is unnecessary.<br>
-                But it must exist.
-            </div>
-        </div>
+<p class="em">"Law is a necessary decoration<br>That's never used.</p>
+<div class="break"></div>
 
-        <div class="ending">
-            <p>I found my answer and bade farewell.</p>
-            <p>I started a new journey,</p>
-            <div class="final">
-                A journey to make law unnecessary,<br>
-                Not unused.
-            </div>
-        </div>
+<p class="em">If a ruler is bad,<br>law is unused.<br>And if the ruler is good,<br>law is unnecessary.<br>But it must exist."</p>
+<div class="break"></div>
 
-        <div class="seal">⚖</div>
+<p>I found my answer and bade farewell.</p>
+<p>I started a new journey,</p>
+<div class="break"></div>
 
-        <div class="footer">
-            <p>© Md Abu Salehin. All rights reserved.</p>
-        </div>
-    </div>
+<p class="em">A journey to make law unnecessary,<br>Not unused.</p>
+</div>
+</div>
 
-    <script>
-        // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.2 });
+<footer>
+<p class="footer-text">&copy; Md Abu Salehin. All rights reserved.</p>
+</footer>
 
-        document.querySelectorAll('.journey').forEach((section, index) => {
-            section.style.transitionDelay = (index * 0.1) + 's';
-            observer.observe(section);
-        });
-
-        // Parallax seal
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            const seal = document.querySelector('.seal');
-            if (seal) {
-                seal.style.transform = `translateY(${scrolled * 0.05}px) rotate(${scrolled * 0.02}deg)`;
-            }
-        });
-    </script>
+<script>
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',scrollY>80)},{passive:true});
+</script>
 </body>
 </html>

@@ -4,81 +4,52 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Thoughts of a Thought | Md Abu Salehin</title>
-<meta name="description" content="A philosophical poem by Md Abu Salehin exploring the eternal question of hero or villain through a dreamlike dialogue.">
+<meta name="description" content="A philosophical poem exploring the eternal question of hero or villain by Md Abu Salehin.">
 <link rel="icon" type="image/x-icon" href="./logo.ico">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--hero:#e63946;--villain:#1d3557;--split:#f1faee;--void:#08080d;--glass:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.06)}
+:root{--ink:#1a1814;--parchment:#f7f3eb;--cream:#ebe5d9;--amber:#c9a227;--amber-dim:rgba(201,162,39,0.08);--amber-soft:rgba(201,162,39,0.12);--charcoal:#2d2a26;--sage:#6b7c6b;--glass:rgba(255,255,255,0.7);--glass-border:rgba(45,42,38,0.1)}
 html{scroll-behavior:smooth}
-body{font-family:'Cormorant Garamond',serif;background:var(--void);color:var(--split);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");opacity:0.025;pointer-events:none;z-index:999;mix-blend-mode:overlay}
+body{font-family:'Crimson Pro',Georgia,serif;background:var(--parchment);color:var(--ink);line-height:1.65;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");opacity:0.02;pointer-events:none;z-index:999;mix-blend-mode:multiply}
+.bg-glow{position:fixed;top:-30%;left:-20%;width:80%;height:80%;background:radial-gradient(circle,rgba(201,162,39,0.04),transparent 70%);pointer-events:none;z-index:0}
+.bg-glow:nth-child(2){top:auto;bottom:-20%;right:-10%;left:auto;width:60%;height:60%;background:radial-gradient(circle,rgba(166,127,124,0.05),transparent 70%)}
 
-.split-bg{position:fixed;inset:0;z-index:0;pointer-events:none;will-change:transform}
-.split-bg::before,.split-bg::after{content:'';position:absolute;top:0;width:55%;height:100%}
-.split-bg::before{left:0;background:radial-gradient(ellipse at 30% 50%,rgba(230,57,70,0.06),transparent 60%);animation:heroPulse 8s ease-in-out infinite}
-.split-bg::after{right:0;background:radial-gradient(ellipse at 70% 50%,rgba(29,53,87,0.06),transparent 60%);animation:villainPulse 8s ease-in-out infinite}
-@keyframes heroPulse{0%,100%{opacity:0.5}50%{opacity:1}}
-@keyframes villainPulse{0%,100%{opacity:1}50%{opacity:0.5}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background 0.4s,padding 0.4s}
+nav.scrolled{background:rgba(247,243,235,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);padding:1rem 3rem}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ink);text-decoration:none;letter-spacing:0.5px;transition:color 0.3s}
+.nav-logo:hover{color:var(--amber)}
+.nav-back{font-family:'Crimson Pro',serif;font-size:0.9rem;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.3s}
+.nav-back:hover{color:var(--amber)}
+.nav-back svg{width:14px;height:14px}
 
-.particles{position:fixed;inset:0;pointer-events:none;z-index:1;contain:layout style}
-.particle{position:absolute;width:3px;height:3px;border-radius:50%;animation:floatParticle linear infinite;will-change:transform}
-@keyframes floatParticle{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.5}90%{opacity:0.5}100%{transform:translateY(-100vh) rotate(720deg);opacity:0}}
+.content{position:relative;z-index:10;max-width:700px;margin:0 auto;padding:6rem 2rem 3rem}
+.header{text-align:center;padding:3rem 0 3rem}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:400;color:var(--ink);line-height:1.08;margin-bottom:0.75rem}
+.header .subtitle{font-family:'EB Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--charcoal);opacity:0.6}
+.header .author-line{font-family:'Crimson Pro',serif;font-size:0.82rem;color:var(--sage);letter-spacing:2px;text-transform:uppercase;margin-top:0.75rem}
+.divider{text-align:center;padding:1.5rem 0;opacity:0.2;display:flex;align-items:center;justify-content:center;gap:1rem}
+.divider-line{width:40px;height:1px;background:var(--amber)}
+.divider-dot{width:4px;height:4px;border-radius:50%;background:var(--amber)}
 
-.back-link{position:fixed;top:1.5rem;left:1.5rem;z-index:100;display:flex;align-items:center;gap:0.5rem;color:var(--split);text-decoration:none;font-size:0.82rem;font-family:'DM Sans',sans-serif;background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);padding:0.5rem 1rem;border-radius:100px;transition:background 0.3s,border-color 0.3s,transform 0.3s}
-.back-link:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.12);transform:translateX(-3px)}
-.back-link svg{width:14px;height:14px;transition:transform 0.3s}
-.back-link:hover svg{transform:translateX(-2px)}
+.poem{padding:2rem 0;max-width:600px;margin:0 auto}
+.poem p{font-family:'Crimson Pro',serif;font-size:1.15rem;line-height:1.8;color:var(--charcoal);margin-bottom:0.5rem}
+.poem .break{height:1.5rem}
+.poem .em{font-family:'EB Garamond',serif;font-style:italic}
 
-.progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--hero),var(--villain));z-index:1000;transition:width 0.1s linear;will-change:width}
-.content{position:relative;z-index:10;max-width:760px;margin:0 auto;padding:3rem 2rem}
-
-.header{text-align:center;padding:7rem 0 3rem}
-.duality-symbol{display:flex;justify-content:center;gap:3rem;margin-bottom:2rem}
-.duality-symbol svg{width:32px;height:32px;opacity:0.7}
-.hero-svg{color:var(--hero);animation:pulseHero 3s ease-in-out infinite}
-.villain-svg{color:var(--villain);animation:pulseVillain 3s ease-in-out infinite}
-@keyframes pulseHero{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
-@keyframes pulseVillain{0%,100%{opacity:1;transform:scale(1.12)}50%{opacity:0.5;transform:scale(1)}}
-.duality-line{width:80px;height:1px;margin:1rem auto 0;background:linear-gradient(90deg,transparent,var(--hero),var(--villain),transparent)}
-
-h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:700;letter-spacing:1px;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--split),rgba(241,250,238,0.6));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.subtitle{font-size:1.1rem;font-style:italic;opacity:0.5}
-.author-line{font-family:'DM Sans',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;opacity:0.35;margin-top:0.75rem}
-
-.question-box{background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);border-radius:16px;padding:2.5rem;margin:2.5rem 0;text-align:center;position:relative}
-.question-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--hero),var(--villain),transparent);opacity:0.4}
-.question-box p{font-size:1.3rem;font-style:italic;line-height:1.8}
-
-.poem-section{padding:1.5rem 0;opacity:0;transform:translateY(30px);transition:opacity 0.6s,transform 0.6s;will-change:transform,opacity}
-.poem-section.visible{opacity:1;transform:translateY(0)}
-.poem-section p{font-size:1.2rem;line-height:2.1;white-space:pre-wrap;color:rgba(241,250,238,0.8)}
-
-.dialogue{background:rgba(255,255,255,0.03);border-radius:14px;padding:2rem;margin:1.5rem 0;border:1px solid var(--glass-border);border-left:3px solid var(--hero);transition:background 0.3s,border-color 0.3s}
-.dialogue:hover{background:rgba(255,255,255,0.05);border-color:rgba(230,57,70,0.12)}
-.dialogue p{font-size:1.15rem;line-height:1.9;white-space:pre-wrap;color:rgba(241,250,238,0.85)}
-
-.realization{text-align:center;padding:3rem 2rem;margin:2.5rem 0;background:radial-gradient(ellipse at center,rgba(255,255,255,0.03) 0%,transparent 70%);border-radius:16px;border:1px solid var(--glass-border)}
-.realization p{font-size:1.4rem;font-style:italic;line-height:2;color:var(--split)}
-
-.ending{text-align:center;padding:3rem 0;border-top:1px solid var(--glass-border);margin-top:3rem}
-.ending p{font-size:1.2rem;line-height:2;opacity:0.65}
-.ending .final-line{font-size:1.6rem;font-weight:600;margin-top:1.5rem;font-style:italic;color:var(--split);background:linear-gradient(135deg,var(--split),rgba(241,250,238,0.6));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-
-.footer-text{text-align:center;margin-top:3rem;opacity:0.25;font-size:0.82rem;font-family:'DM Sans',sans-serif}
+footer{padding:3rem 6rem;text-align:center;position:relative;z-index:1;border-top:1px solid var(--glass-border)}
+.footer-text{font-family:'Crimson Pro',serif;font-size:0.85rem;color:var(--charcoal);opacity:0.5}
 
 @media(max-width:768px){
-  .content{padding:2rem 1.25rem}
-  .header{padding:5rem 0 2rem}
-  h1{font-size:2rem}
-  .question-box{padding:2rem}
-  .question-box p{font-size:1.15rem}
-  .poem-section p{font-size:1.05rem}
-  .dialogue{padding:1.5rem}
-  .dialogue p{font-size:1.05rem}
-  .back-link{top:1rem;left:1rem;padding:0.45rem 0.85rem}
-  .ending .final-line{font-size:1.3rem}
-  .duality-symbol svg{width:26px;height:26px}
+  nav{padding:1.25rem 2rem}
+  nav.scrolled{padding:0.85rem 2rem}
+  .content{padding:5rem 1.5rem 2rem}
+  .header{padding:2rem 0}
+  .poem p{font-size:1.05rem}
+  footer{padding:2rem}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
@@ -86,76 +57,128 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-
 </style>
 </head>
 <body>
-<div class="progress-bar" id="progressBar"></div>
-<div class="split-bg"></div>
-<div class="particles" id="particles"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow"></div>
 
-<a href="./index.html" class="back-link">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back
-</a>
+<nav id="navbar">
+<a href="./index.html" class="nav-logo">M. A. Salehin</a>
+<a href="./index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>Back to Poems</a>
+</nav>
 
 <div class="content">
 <header class="header">
-<div class="duality-symbol">
-<svg class="hero-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/><path d="M17 4a2 2 0 0 0 -2 2v4.5"/><path d="M19 4a2 2 0 0 1 2 2v4.5"/></svg>
-<svg class="villain-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-</div>
-<div class="duality-line"></div>
-<h1>The Thoughts of a Thought</h1>
+<h1>The Thoughts<br>of a Thought</h1>
 <p class="subtitle">A philosophical journey between the thought and the writer</p>
 <p class="author-line">By Md Abu Salehin</p>
 </header>
 
-<div class="question-box"><p>A hero or a villain?<br>What you want to be?</p></div>
+<div class="divider"><span class="divider-line"></span><span class="divider-dot"></span><span class="divider-line"></span></div>
 
-<section class="poem-section"><p>I was on my own, sailing on my heart</p><p style="margin-top:1.5rem">Then suddenly, a voice came.</p></section>
-<div class="dialogue"><p>Saying that, "A hero or a villain?</p><p style="margin-top:1rem">What you want to be?"</p></div>
-<section class="poem-section"><p>Like others, I said, "The hero".</p><p style="margin-top:1.5rem">The voice again said,</p></section>
-<div class="dialogue"><p>"The hero who would kill his love to save the world?</p><p style="margin-top:1rem">Or,</p><p style="margin-top:1rem">The villain who could save his love and kill the whole world!"</p></div>
-<section class="poem-section"><p>The options were the same yet totally different.</p><p style="margin-top:1rem">I didn't know what to choose.</p></section>
-<div class="realization"><p>One side, my family and friends</p><p>Other side, the eight billion</p></div>
-<section class="poem-section"><p>A good person would hesitate</p><p>But will choose the latter.</p><p style="margin-top:1rem">A bad person wouldn't hesitate</p><p>And will also choose the latter.</p><p style="margin-top:1.5rem">I don't know what to call myself,</p><p>Good or bad?</p></section>
-<section class="poem-section"><p>I would choose the former.</p><p style="margin-top:1.5rem">The voice again said, "So, you choose the villain?</p><p style="margin-top:1rem">Know that the family and friends you saved,</p><p>"Will blame you for saving them</p><p>And will also curse you, if you have killed them."</p></section>
-<section class="poem-section"><p>The choices are still the same</p><p>But my answer is not.</p><p style="margin-top:1.5rem">I am confused and don't know what to do.</p><p style="margin-top:1.5rem">Then I asked, "Is there a better option?"</p><p>He said, "You know better."</p></section>
-<div class="dialogue"><p>The riddles were all easy yet I can't answer.</p><p style="margin-top:1rem">Like that time passed and passed.</p><p style="margin-top:1rem">I was still sailing and thinking.</p><p style="margin-top:1rem">I don't know what to choose.</p></div>
-<section class="poem-section"><p>Thinking like that, another eon passed by</p><p>Yet I was still just thinking.</p></section>
-<section class="poem-section"><p>At the end, I lose</p><p style="margin-top:1rem">I asked for the answer.</p><p style="margin-top:1.5rem">The voice came and said,</p></section>
-<div class="dialogue"><p>"First, tell me who am I?"</p></div>
-<section class="poem-section"><p>I also thought about that</p><p>But again failed.</p></section>
-<div class="dialogue"><p>He said, "I am the one</p><p style="margin-top:0.5rem">on whom you are sailing.</p><p style="margin-top:0.5rem">I am the thought,</p><p style="margin-top:0.5rem">You are thinking."</p></div>
-<section class="poem-section"><p>"You are me?", I asked.</p><p style="margin-top:1rem">He said, "Not you but your thought."</p><p style="margin-top:1.5rem">"If you are my thought then why can't I answer?"</p><p>I again asked.</p><p style="margin-top:1rem">He said, "Because there is no answer."</p></section>
-<section class="poem-section"><p>I took a step back.</p><p style="margin-top:1.5rem">He again said, You are just a normal man.</p><p style="margin-top:1rem">You shouldn't think about it because</p></section>
-<div class="realization"><p>Even if you want to,</p><p>you could never be able to kill billions of people.</p></div>
-<section class="poem-section"><p>Those are just thoughts</p><p>Nothing more, nothing less.</p></section>
+<div class="poem">
+<p>I was on my own, sailing on my heart</p>
+<p>Then suddenly, a voice came.</p>
+<p>Saying that,</p>
+<div class="break"></div>
 
-<div class="ending">
-<p>Finally I understood.</p><p>I woke up from the dream.</p><p>I forgot everything except the fact that</p>
-<div class="final-line">A thought is just a fiction.<br>It's nothing to worry about.<br>Just live your life, like you would have.</div>
+<p class="em">"A hero or a villain?<br>What you want to be?"</p>
+<div class="break"></div>
+
+<p>Like others, I said, "The hero".</p>
+<p>The voice again said,</p>
+<div class="break"></div>
+
+<p class="em">"The hero who would kill his love to save the world?<br>Or,<br>The villain who could save his love and kill the whole world!"</p>
+<div class="break"></div>
+
+<p>The options were the same yet totally different.</p>
+<p>I didn't know what to choose.</p>
+<div class="break"></div>
+
+<p>One side, my family and friends</p>
+<p>Other side, the eight billion</p>
+<div class="break"></div>
+
+<p>A good person would hesitate</p>
+<p>But will choose the latter.</p>
+<p>A bad person wouldn't hesitate</p>
+<p>And will also choose the latter.</p>
+<p>I don't know what to call myself,</p>
+<p>Good or bad?</p>
+<div class="break"></div>
+
+<p>I would choose the former.</p>
+<p>The voice again said,</p>
+<p class="em">"So, you choose the villain?<br>Know that the family and friends you saved,<br>Will blame you for saving them<br>And will also curse you, if you have killed them."</p>
+<div class="break"></div>
+
+<p>The choices are still the same</p>
+<p>But my answer is not.</p>
+<p>I am confused and don't know what to do.</p>
+<p>Then I asked, "Is there a better option?"</p>
+<p>He said, "You know better."</p>
+<div class="break"></div>
+
+<p>The riddles were all easy yet I can't answer.</p>
+<p>Like that time passed and passed.</p>
+<p>I was still sailing and thinking.</p>
+<p>I don't know what to choose.</p>
+<div class="break"></div>
+
+<p>Thinking like that, another eon passed by</p>
+<p>Yet I was still just thinking.</p>
+<div class="break"></div>
+
+<p>At the end, I lose</p>
+<p>I asked for the answer.</p>
+<p>The voice came and said,</p>
+<div class="break"></div>
+
+<p class="em">"First, tell me who am I?"</p>
+<div class="break"></div>
+
+<p>I also thought about that</p>
+<p>But again failed.</p>
+<div class="break"></div>
+
+<p class="em">"I am the one<br>on whom you are sailing.<br>I am the thought,<br>You are thinking."</p>
+<div class="break"></div>
+
+<p>"You are me?", I asked.</p>
+<p>He said, "Not you but your thought."</p>
+<p>"If you are my thought then why can't I answer?"</p>
+<p>I again asked.</p>
+<p>He said, "Because there is no answer."</p>
+<div class="break"></div>
+
+<p>I took a step back.</p>
+<p>He again said,</p>
+<p>You are just a normal man.</p>
+<p>You shouldn't think about it because</p>
+<div class="break"></div>
+
+<p class="em">Even if you want to,<br>you could never be able to kill billions of people.</p>
+<div class="break"></div>
+
+<p>Those are just thoughts</p>
+<p>Nothing more, nothing less.</p>
+<div class="break"></div>
+
+<p>Finally I understood.</p>
+<p>I woke up from the dream.</p>
+<p>I forgot everything except the fact that</p>
+<div class="break"></div>
+
+<p class="em">A thought is just a fiction.<br>It's nothing to worry about.<br>Just live your life, like you would have.</p>
 </div>
+</div>
+
+<footer>
 <p class="footer-text">&copy; Md Abu Salehin. All rights reserved.</p>
-</div>
+</footer>
 
 <script>
-// Progress
-const pb=document.getElementById('progressBar');
-window.addEventListener('scroll',()=>{pb.style.width=((scrollY/(document.documentElement.scrollHeight-innerHeight))*100)+'%'},{passive:true});
-
-// Scroll reveal
-const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
-document.querySelectorAll('.poem-section').forEach(s=>obs.observe(s));
-
-// Particles
-const pc=document.getElementById('particles');
-const cols=['#e63946','#1d3557','#f1faee'];
-for(let i=0;i<20;i++){
-  const p=document.createElement('div');p.className='particle';
-  p.style.left=Math.random()*100+'%';
-  p.style.background=cols[i%3];
-  p.style.animationDelay=Math.random()*20+'s';
-  p.style.animationDuration=(Math.random()*12+12)+'s';
-  p.style.width=''+(2+Math.random()*2)+'px';p.style.height=p.style.width;
-  pc.appendChild(p);
-}
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',scrollY>80)},{passive:true});
 </script>
 </body>
 </html>

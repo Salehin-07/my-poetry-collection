@@ -6,92 +6,52 @@
 <title>A Late Return or Not | Md Abu Salehin</title>
 <meta name="description" content="A profound poem about love, choices, and the verdict of the heart by Md Abu Salehin.">
 <link rel="icon" type="image/x-icon" href="./logo.ico">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--court-dark:#10101e;--court-mid:#161636;--gold:#d4a84b;--parchment:#f0ead8;--decision-yes:#2d6a4f;--decision-no:#9d0208;--glass:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.05)}
+:root{--ink:#1a1814;--parchment:#f7f3eb;--cream:#ebe5d9;--amber:#c9a227;--amber-dim:rgba(201,162,39,0.08);--amber-soft:rgba(201,162,39,0.12);--charcoal:#2d2a26;--sage:#6b7c6b;--glass:rgba(255,255,255,0.7);--glass-border:rgba(45,42,38,0.1)}
 html{scroll-behavior:smooth}
-body{font-family:'Cormorant Garamond',serif;background:linear-gradient(180deg,var(--court-dark) 0%,var(--court-mid) 50%,var(--court-dark) 100%);color:var(--parchment);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");opacity:0.02;pointer-events:none;z-index:999;mix-blend-mode:overlay}
+body{font-family:'Crimson Pro',Georgia,serif;background:var(--parchment);color:var(--ink);line-height:1.65;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");opacity:0.02;pointer-events:none;z-index:999;mix-blend-mode:multiply}
+.bg-glow{position:fixed;top:-30%;left:-20%;width:80%;height:80%;background:radial-gradient(circle,rgba(201,162,39,0.04),transparent 70%);pointer-events:none;z-index:0}
+.bg-glow:nth-child(2){top:auto;bottom:-20%;right:-10%;left:auto;width:60%;height:60%;background:radial-gradient(circle,rgba(166,127,124,0.05),transparent 70%)}
 
-.court-glow{position:fixed;top:50%;left:50%;width:500px;height:500px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(212,168,75,0.03) 0%,transparent 60%);pointer-events:none;z-index:0;animation:glowPulse 6s ease-in-out infinite}
-@keyframes glowPulse{0%,100%{opacity:0.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:0.8;transform:translate(-50%,-50%) scale(1.15)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background 0.4s,padding 0.4s}
+nav.scrolled{background:rgba(247,243,235,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);padding:1rem 3rem}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ink);text-decoration:none;letter-spacing:0.5px;transition:color 0.3s}
+.nav-logo:hover{color:var(--amber)}
+.nav-back{font-family:'Crimson Pro',serif;font-size:0.9rem;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.3s}
+.nav-back:hover{color:var(--amber)}
+.nav-back svg{width:14px;height:14px}
 
-.scales-anim{position:fixed;top:50%;left:50%;width:140px;height:140px;transform:translate(-50%,-50%);pointer-events:none;z-index:0;opacity:0.025}
-.scales-anim svg{width:100%;height:100%;color:var(--gold);animation:scalesBalance 8s ease-in-out infinite}
-@keyframes scalesBalance{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.content{position:relative;z-index:10;max-width:700px;margin:0 auto;padding:6rem 2rem 3rem}
+.header{text-align:center;padding:3rem 0 3rem}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:400;color:var(--ink);line-height:1.08;margin-bottom:0.75rem}
+.header .subtitle{font-family:'EB Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--charcoal);opacity:0.6}
+.header .author-line{font-family:'Crimson Pro',serif;font-size:0.82rem;color:var(--sage);letter-spacing:2px;text-transform:uppercase;margin-top:0.75rem}
+.divider{text-align:center;padding:1.5rem 0;opacity:0.2;display:flex;align-items:center;justify-content:center;gap:1rem}
+.divider-line{width:40px;height:1px;background:var(--amber)}
+.divider-dot{width:4px;height:4px;border-radius:50%;background:var(--amber)}
 
-.back-link{position:fixed;top:1.5rem;left:1.5rem;z-index:100;display:flex;align-items:center;gap:0.5rem;color:var(--parchment);text-decoration:none;font-size:0.82rem;font-family:'DM Sans',sans-serif;background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);padding:0.5rem 1rem;border-radius:100px;transition:background 0.3s,border-color 0.3s,transform 0.3s}
-.back-link:hover{background:rgba(255,255,255,0.06);border-color:rgba(212,168,75,0.12);transform:translateX(-3px)}
-.back-link svg{width:14px;height:14px;transition:transform 0.3s}
-.back-link:hover svg{transform:translateX(-2px)}
+.poem{padding:2rem 0;max-width:600px;margin:0 auto}
+.poem p{font-family:'Crimson Pro',serif;font-size:1.15rem;line-height:1.8;color:var(--charcoal);margin-bottom:0.5rem}
+.poem .spacer{height:1.5rem}
+.poem .em{font-family:'EB Garamond',serif;font-style:italic}
+.poem .verse{display:block;margin-bottom:1.5rem}
+.poem .break{height:1.5rem}
 
-.content{position:relative;z-index:10;max-width:760px;margin:0 auto;padding:3rem 2rem}
-
-.header{text-align:center;padding:7rem 0 3rem}
-.gavel-svg{width:36px;height:36px;color:var(--gold);opacity:0.35;margin-bottom:1.25rem;display:inline-block;animation:gavelTap 4s ease-in-out infinite}
-@keyframes gavelTap{0%,100%{transform:rotate(0deg)}8%{transform:rotate(-12deg) translateY(-3px)}16%{transform:rotate(0deg)}24%{transform:rotate(-12deg) translateY(-3px)}32%{transform:rotate(0deg)}}
-h1{font-family:'Spectral',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:700;letter-spacing:2px;color:var(--parchment);margin-bottom:0.5rem}
-.subtitle{font-size:1.1rem;font-style:italic;opacity:0.4;color:var(--gold)}
-.author-line{font-family:'DM Sans',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;opacity:0.3;margin-top:0.65rem}
-
-.court-intro{text-align:center;padding:2.5rem;margin-bottom:1.5rem;background:rgba(255,255,255,0.03);border-radius:14px;border:1px solid var(--glass-border)}
-.court-intro p{font-size:1.25rem;line-height:2;white-space:pre-wrap;color:rgba(240,234,216,0.8)}
-
-.case-section{padding:1.5rem 0;opacity:0;transform:translateX(-20px);transition:opacity 0.5s,transform 0.5s;will-change:transform,opacity}
-.case-section.visible{opacity:1;transform:translateX(0)}
-.case-section p{font-size:1.15rem;line-height:2;white-space:pre-wrap;color:rgba(240,234,216,0.75)}
-
-.verdict-card{background:rgba(255,255,255,0.03);border-radius:14px;padding:1.75rem;margin:1.5rem 0;border:1px solid var(--glass-border);position:relative;transition:border-color 0.3s}
-.verdict-card:hover{border-color:rgba(255,255,255,0.08)}
-.verdict-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px}
-.verdict-card.yes::before{background:var(--decision-yes)}
-.verdict-card.no::before{background:var(--decision-no)}
-.verdict-card.neutral::before{background:var(--gold)}
-.verdict-label{font-family:'Spectral',serif;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:0.75rem;color:var(--gold)}
-.verdict-card p{font-size:1.1rem;line-height:1.85;white-space:pre-wrap;color:rgba(240,234,216,0.8)}
-
-.question-box{text-align:center;padding:1.75rem;margin:1.5rem 0;background:rgba(212,168,75,0.03);border:1px dashed rgba(212,168,75,0.12);border-radius:10px;font-family:'Spectral',serif;font-size:1.3rem;font-style:italic;color:var(--gold)}
-
-.lawyer-round{background:rgba(255,255,255,0.03);border-radius:14px;padding:2rem;margin:1.5rem 0;border:1px solid var(--glass-border);transition:border-color 0.3s;opacity:0;transform:translateY(24px);transition:opacity 0.5s,transform 0.5s,border-color 0.3s;will-change:transform,opacity}
-.lawyer-round.visible{opacity:1;transform:translateY(0)}
-.lawyer-round:hover{border-color:rgba(212,168,75,0.08)}
-.lawyer-round .round-label{font-family:'Spectral',serif;font-size:0.85rem;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.25rem}
-.lawyer-round p{font-size:1.1rem;line-height:2;white-space:pre-wrap;color:rgba(240,234,216,0.8)}
-
-.verdict-result{text-align:center;padding:2rem;margin:1.5rem 0;background:rgba(255,255,255,0.03);border-radius:14px;border:1px solid var(--glass-border)}
-.verdict-result p{font-family:'Spectral',serif;font-size:1.3rem;font-weight:600}
-.verdict-result .yes-text{color:var(--decision-yes)}
-.verdict-result .no-text{color:var(--decision-no)}
-
-.final-answer{text-align:center;padding:4rem 2rem;margin:2.5rem 0;background:radial-gradient(ellipse at center,rgba(212,168,75,0.04) 0%,transparent 70%);border-radius:16px;border:1px solid var(--glass-border)}
-.final-answer p{font-size:1.2rem;line-height:2;white-space:pre-wrap;color:rgba(240,234,216,0.75)}
-.final-answer .the-word{font-family:'Spectral',serif;font-size:3rem;font-weight:700;color:var(--gold);margin:1.5rem 0;text-shadow:0 0 30px rgba(212,168,75,0.15)}
-
-.awakening{text-align:center;padding:3rem 1.5rem;margin-top:2rem;border-top:1px solid var(--glass-border)}
-.awakening h3{font-family:'Spectral',serif;font-size:1.3rem;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:0.5rem}
-.awakening h3 svg{width:22px;height:22px}
-.awakening p{font-size:1.2rem;line-height:2.1;white-space:pre-wrap;color:rgba(240,234,216,0.7)}
-.awakening .closing-lines{margin-top:1.5rem}
-.awakening .closing-lines p{font-size:1.3rem;font-style:italic;color:var(--parchment);line-height:2}
-.awakening .final-word{font-size:1.8rem;color:var(--gold);margin-top:1.25rem;font-weight:600;font-family:'Spectral',serif}
-
-.footer-text{text-align:center;padding:2.5rem 0;opacity:0.2;font-size:0.82rem;font-family:'DM Sans',sans-serif}
+footer{padding:3rem 6rem;text-align:center;position:relative;z-index:1;border-top:1px solid var(--glass-border)}
+.footer-text{font-family:'Crimson Pro',serif;font-size:0.85rem;color:var(--charcoal);opacity:0.5}
 
 @media(max-width:768px){
-  .content{padding:2rem 1.25rem}
-  .header{padding:5rem 0 2rem}
-  h1{font-size:2rem}
-  .court-intro p{font-size:1.1rem}
-  .case-section p{font-size:1rem}
-  .question-box{font-size:1.1rem;padding:1.25rem}
-  .lawyer-round{padding:1.5rem}
-  .lawyer-round p{font-size:1rem}
-  .final-answer .the-word{font-size:2.2rem}
-  .back-link{top:1rem;left:1rem;padding:0.45rem 0.85rem}
-  .awakening .closing-lines p{font-size:1.1rem}
-  .awakening .final-word{font-size:1.4rem}
-  .scales-anim{width:100px;height:100px}
+  nav{padding:1.25rem 2rem}
+  nav.scrolled{padding:0.85rem 2rem}
+  .content{padding:5rem 1.5rem 2rem}
+  .header{padding:2rem 0}
+  .poem p{font-size:1.05rem}
+  footer{padding:2rem}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
@@ -99,64 +59,149 @@ h1{font-family:'Spectral',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:7
 </style>
 </head>
 <body>
-<div class="court-glow"></div>
-<div class="scales-anim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 21h8"/><path d="M5 9 12 3l7 6"/><path d="M5 9v6l7 6v-6z"/><path d="M19 9v6l-7 6v-6z"/></svg></div>
+<div class="bg-glow"></div>
+<div class="bg-glow"></div>
 
-<a href="./index.html" class="back-link">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back
-</a>
+<nav id="navbar">
+<a href="./index.html" class="nav-logo">M. A. Salehin</a>
+<a href="./index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>Back to Poems</a>
+</nav>
 
 <div class="content">
 <header class="header">
-<svg class="gavel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 21h8"/><path d="M8 10l4-7 4 7"/><path d="M8 10h8"/></svg>
 <h1>A Late Return or Not</h1>
 <p class="subtitle">Where the heart becomes the courtroom</p>
 <p class="author-line">By Md Abu Salehin</p>
 </header>
 
-<div class="court-intro"><p>My mind was the court.</p><p>I was the judge.</p><p>And my two egos</p><p>stood as the lawyers.</p></div>
+<div class="divider"><span class="divider-line"></span><span class="divider-dot"></span><span class="divider-line"></span></div>
 
-<section class="case-section"><p>That day, I sat to judge an answer&mdash;</p><p>an answer to a question</p><p>that refused to be simple.</p></section>
+<div class="poem">
+<p>My mind was the court.</p>
+<p>I was the judge.</p>
+<p>And my two egos</p>
+<p>stood as the lawyers.</p>
+<div class="break"></div>
 
-<div class="verdict-card neutral"><div class="verdict-label">The Defendants</div><p>The question was presented,</p><p>and Yes and No</p><p>stood as the defendants.</p><p style="margin-top:1rem">One would leave with honour,</p><p>the other accused guilty.</p></div>
+<p>That day, I sat to judge an answer&mdash;</p>
+<p>an answer to a question</p>
+<p>that refused to be simple.</p>
+<div class="break"></div>
 
-<section class="case-section"><p>The question was presented by the heart.</p></section>
+<p>The question was presented,</p>
+<p>and Yes and No</p>
+<p>stood as the defendants.</p>
+<p>One would leave with honour,</p>
+<p>the other accused guilty.</p>
+<div class="break"></div>
 
-<div class="lawyer-round"><div class="round-label">&#x2015; The Backstory</div><p>In childhood,</p><p>one fell in love</p><p>but never had the courage to speak.</p><p style="margin-top:1rem">He was crazy enough to die for her,</p><p>but fate did not allow it.</p><p>They were separated.</p><p style="margin-top:1.5rem">He grew into a man.</p><p>Love never found him again.</p><p>Until one day,</p><p>he saw her again.</p></div>
+<p>The question was presented by the heart.</p>
+<div class="break"></div>
 
-<div class="question-box">She stood before him and asked&mdash;<br>Should he accept?</div>
+<p>In childhood,</p>
+<p>one fell in love</p>
+<p>but never had the courage to speak.</p>
+<p>He was crazy enough to die for her,</p>
+<p>but fate did not allow it.</p>
+<p>They were separated.</p>
+<div class="break"></div>
 
-<div class="lawyer-round"><div class="round-label">&#x2015; Round 1</div><p>One lawyer stood up,</p><p>said everything convincing</p><p>that the answer should be Yes.</p><p style="margin-top:1.5rem">I gave my judgement.</p></div>
+<p>He grew into a man.</p>
+<p>Love never found him again.</p>
+<p>Until one day,</p>
+<p>he saw her again.</p>
+<div class="break"></div>
 
-<div class="verdict-result"><p class="yes-text">&#x2713; Yes won.</p></div>
+<p>She stood before him and asked&mdash;</p>
+<div class="break"></div>
 
-<div class="lawyer-round"><div class="round-label">&#x2015; Heart's Objection</div><p>"Wait," the heart said again.</p><p>"She was pure.</p><p>She had her sanity.</p><p>She was in a relationship,</p><p>but she broke up."</p></div>
+<p class="em">Should he accept?</p>
+<div class="break"></div>
 
-<div class="lawyer-round"><div class="round-label">&#x2015; Round 2</div><p>Both lawyers stood up,</p><p>said everything they had to say.</p><p>Again,</p><p>my judgement leaned toward Yes.</p></div>
+<p>One lawyer stood up,</p>
+<p>said everything convincing</p>
+<p>that the answer should be Yes.</p>
+<p>I gave my judgement.</p>
+<div class="break"></div>
 
-<div class="lawyer-round"><div class="round-label">&#x2015; Heart's Evidence</div><p>Then the heart added a detail&mdash;</p><div class="question-box" style="margin:0.75rem 0">"They were together for years."</div><p style="margin-top:1rem">No one stood up.</p><p>I gave my judgement</p><p class="no-text">supporting No.</p></div>
+<p>Yes won.</p>
+<div class="break"></div>
 
-<div class="verdict-result"><p class="no-text">&#x2717; No.</p></div>
+<p>"Wait," the heart said again.</p>
+<p>"She was pure.</p>
+<p>She had her sanity.</p>
+<p>She was in a relationship,</p>
+<p>but she broke up."</p>
+<div class="break"></div>
 
-<div class="lawyer-round"><div class="round-label">&#x2015; Heart's Question</div><p>Again, the heart spoke softly&mdash;</p><div class="question-box" style="margin:0.75rem 0">"What if she lost her sanity?<br>Must he still accept?"</div><p style="margin-top:1.5rem">The second lawyer stood up,</p><p>showed his proof.</p><p>My judgement remained No.</p></div>
+<p>Both lawyers stood up,</p>
+<p>said everything they had to say.</p>
+<p>Again,</p>
+<p>my judgement leaned toward Yes.</p>
+<div class="break"></div>
 
-<div class="lawyer-round"><div class="round-label">&#x2015; Final Round</div><p>Lastly, the heart whispered&mdash;</p><div class="question-box" style="margin:0.75rem 0">"If the boy still loves her<br>the way he once did,<br>will he be crazy enough<br>to choose her now?"</div><p style="margin-top:1.5rem">This time,</p><p>the boy himself spoke.</p></div>
+<p>Then the heart added a detail&mdash;</p>
+<div class="break"></div>
 
-<div class="final-answer"><div class="the-word">"Yes."</div><p>No court.</p><p>No lawyers.</p><p>No judgement needed.</p></div>
+<p class="em">"They were together for years."</p>
+<div class="break"></div>
 
-<div class="awakening">
-<h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 21h8"/><path d="M8 10l4-7 4 7"/><path d="M8 10h8"/></svg> The Verdict</h3>
-<p>Suddenly, I woke up</p><p>and understood&mdash;</p>
-<div class="closing-lines"><p>The best thing at first</p><p>may become the worst at last.</p><p style="margin-top:1rem">And the worst</p><p>may turn into the best again.</p></div>
-<p style="margin-top:1.5rem">All it took</p><p class="final-word">was a word.</p>
+<p>No one stood up.</p>
+<p>I gave my judgement</p>
+<p>supporting No.</p>
+<div class="break"></div>
+
+<p>Again, the heart spoke softly&mdash;</p>
+<div class="break"></div>
+
+<p class="em">"What if she lost her sanity?<br>Must he still accept?"</p>
+<div class="break"></div>
+
+<p>The second lawyer stood up,</p>
+<p>showed his proof.</p>
+<p>My judgement remained No.</p>
+<div class="break"></div>
+
+<p>Lastly, the heart whispered&mdash;</p>
+<div class="break"></div>
+
+<p class="em">"If the boy still loves her<br>the way he once did,<br>will he be crazy enough<br>to choose her now?"</p>
+<div class="break"></div>
+
+<p>This time,</p>
+<p>the boy himself spoke.</p>
+<div class="break"></div>
+
+<p class="em">"Yes."</p>
+<div class="break"></div>
+
+<p>No court.</p>
+<p>No lawyers.</p>
+<p>No judgement needed.</p>
+<div class="break"></div>
+
+<p>Suddenly, I woke up</p>
+<p>and understood&mdash;</p>
+<div class="break"></div>
+
+<p>The best thing at first</p>
+<p>may become the worst at last.</p>
+<p>And the worst</p>
+<p>may turn into the best again.</p>
+<div class="break"></div>
+
+<p>All it took</p>
+<p>was a word.</p>
 </div>
+</div>
+
+<footer>
 <p class="footer-text">&copy; Md Abu Salehin. All rights reserved.</p>
-</div>
+</footer>
 
 <script>
-// Scroll reveal
-const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});
-document.querySelectorAll('.case-section, .lawyer-round').forEach((el,i)=>{el.style.transitionDelay=(i*0.06)+'s';obs.observe(el)});
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',scrollY>80)},{passive:true});
 </script>
 </body>
 </html>

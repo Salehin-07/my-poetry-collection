@@ -6,81 +6,50 @@
 <title>Seas of Past | Md Abu Salehin</title>
 <meta name="description" content="A reflection on time, age, and the ironic cycles of life by Md Abu Salehin.">
 <link rel="icon" type="image/x-icon" href="./logo.ico">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--ocean-deep:#060d14;--foam:#dce8ef;--sand:#b8a88a;--glass:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.05)}
+:root{--ink:#1a1814;--parchment:#f7f3eb;--cream:#ebe5d9;--amber:#c9a227;--amber-dim:rgba(201,162,39,0.08);--amber-soft:rgba(201,162,39,0.12);--charcoal:#2d2a26;--sage:#6b7c6b;--glass:rgba(255,255,255,0.7);--glass-border:rgba(45,42,38,0.1)}
 html{scroll-behavior:smooth}
-body{font-family:'Cormorant Garamond',serif;background:var(--ocean-deep);color:var(--foam);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");opacity:0.02;pointer-events:none;z-index:999;mix-blend-mode:overlay}
+body{font-family:'Crimson Pro',Georgia,serif;background:var(--parchment);color:var(--ink);line-height:1.65;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");opacity:0.02;pointer-events:none;z-index:999;mix-blend-mode:multiply}
+.bg-glow{position:fixed;top:-30%;left:-20%;width:80%;height:80%;background:radial-gradient(circle,rgba(201,162,39,0.04),transparent 70%);pointer-events:none;z-index:0}
+.bg-glow:nth-child(2){top:auto;bottom:-20%;right:-10%;left:auto;width:60%;height:60%;background:radial-gradient(circle,rgba(166,127,124,0.05),transparent 70%)}
 
-.ocean-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
-.ocean-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(26,74,110,0.06),transparent 60%);animation:oceanPulse 12s ease-in-out infinite alternate}
-@keyframes oceanPulse{0%{opacity:0.3}100%{opacity:0.6}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background 0.4s,padding 0.4s}
+nav.scrolled{background:rgba(247,243,235,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);padding:1rem 3rem}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ink);text-decoration:none;letter-spacing:0.5px;transition:color 0.3s}
+.nav-logo:hover{color:var(--amber)}
+.nav-back{font-family:'Crimson Pro',serif;font-size:0.9rem;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.3s}
+.nav-back:hover{color:var(--amber)}
+.nav-back svg{width:14px;height:14px}
 
-.waves{position:fixed;bottom:0;left:0;width:100%;height:35vh;min-height:160px;pointer-events:none;z-index:0}
-.wave-svg{position:absolute;bottom:0;left:-5%;width:110%;height:100%}
-.wave-svg:nth-child(1){opacity:0.12;animation:waveMove 14s ease-in-out infinite}
-.wave-svg:nth-child(2){opacity:0.08;bottom:-5%;animation:waveMove 18s ease-in-out infinite reverse}
-.wave-svg:nth-child(3){opacity:0.05;bottom:-8%;animation:waveMove 22s ease-in-out infinite}
-@keyframes waveMove{0%,100%{transform:translateX(0) translateY(0)}50%{transform:translateX(-2%) translateY(-1%)}}
+.content{position:relative;z-index:10;max-width:700px;margin:0 auto;padding:6rem 2rem 3rem}
+.header{text-align:center;padding:3rem 0 3rem}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:400;color:var(--ink);line-height:1.08;margin-bottom:0.75rem}
+.header .subtitle{font-family:'EB Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--charcoal);opacity:0.6}
+.header .author-line{font-family:'Crimson Pro',serif;font-size:0.82rem;color:var(--sage);letter-spacing:2px;text-transform:uppercase;margin-top:0.75rem}
+.divider{text-align:center;padding:1.5rem 0;opacity:0.2;display:flex;align-items:center;justify-content:center;gap:1rem}
+.divider-line{width:40px;height:1px;background:var(--amber)}
+.divider-dot{width:4px;height:4px;border-radius:50%;background:var(--amber)}
 
-.bubbles{position:fixed;inset:0;pointer-events:none;z-index:0;contain:layout style}
-.bubble{position:absolute;bottom:-60px;background:radial-gradient(circle at 30% 30%,rgba(220,232,239,0.2),rgba(220,232,239,0.03));border-radius:50%;animation:bubbleRise linear infinite;will-change:transform}
-@keyframes bubbleRise{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:0.4}90%{opacity:0.25}100%{transform:translateY(-120vh) translateX(30px);opacity:0}}
+.poem{padding:2rem 0;max-width:600px;margin:0 auto}
+.poem p{font-family:'Crimson Pro',serif;font-size:1.15rem;line-height:1.8;color:var(--charcoal);margin-bottom:0.5rem}
+.poem .break{height:1.5rem}
+.poem .em{font-family:'EB Garamond',serif;font-style:italic}
 
-.back-link{position:fixed;top:1.5rem;left:1.5rem;z-index:100;display:flex;align-items:center;gap:0.5rem;color:var(--foam);text-decoration:none;font-size:0.82rem;font-family:'DM Sans',sans-serif;background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);padding:0.5rem 1rem;border-radius:100px;transition:background 0.3s,border-color 0.3s,transform 0.3s}
-.back-link:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);transform:translateX(-3px)}
-.back-link svg{width:14px;height:14px;transition:transform 0.3s}
-.back-link:hover svg{transform:translateX(-2px)}
-
-.content{position:relative;z-index:10;max-width:800px;margin:0 auto;padding:3rem 2rem}
-
-.header{text-align:center;padding:7rem 0 3rem}
-.boat-svg{width:42px;height:42px;color:var(--foam);opacity:0.3;margin-bottom:1.5rem;display:inline-block;animation:boatFloat 5s ease-in-out infinite}
-@keyframes boatFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
-h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:400;letter-spacing:2px;margin-bottom:0.5rem;color:var(--foam)}
-.subtitle{font-size:1.1rem;font-style:italic;opacity:0.4}
-.author-line{font-family:'DM Sans',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;opacity:0.3;margin-top:0.65rem}
-
-.opening{text-align:center;padding:2.5rem;margin:2rem 0;background:rgba(255,255,255,0.03);border-radius:16px;border:1px solid var(--glass-border)}
-.opening p{font-size:1.4rem;font-style:italic;line-height:1.8;font-weight:500}
-
-.sea-section{padding:2.5rem 0;opacity:0;transform:translateY(40px);transition:opacity 0.6s,transform 0.6s;will-change:transform,opacity}
-.sea-section.visible{opacity:1;transform:translateY(0)}
-.sea-marker{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.25rem}
-.sea-icon-wrap{width:56px;height:56px;background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--foam);transition:box-shadow 0.4s}
-.sea-icon-wrap svg{width:24px;height:24px;opacity:0.5}
-.sea-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;color:var(--foam)}
-.sea-subtitle{font-size:0.9rem;font-style:italic;opacity:0.4;margin-top:0.1rem;color:var(--sand)}
-.sea-content{background:rgba(255,255,255,0.03);border-radius:14px;padding:1.75rem;border:1px solid var(--glass-border);transition:border-color 0.3s}
-.sea-content:hover{border-color:rgba(255,255,255,0.08)}
-.sea-content p{font-size:1.1rem;line-height:2.1;white-space:pre-wrap;color:rgba(220,232,239,0.75)}
-
-.cycle-section{text-align:center;padding:4rem 2rem;margin:2.5rem 0;background:radial-gradient(ellipse at center,rgba(212,118,94,0.04) 0%,transparent 70%);border-radius:20px;border:1px solid var(--glass-border)}
-.cycle-quote{font-family:'Playfair Display',serif;font-size:1.6rem;font-style:italic;line-height:1.7;margin-bottom:1.5rem;color:var(--foam)}
-.cycle-poem p{font-size:1.2rem;line-height:2.2;white-space:pre-wrap;color:rgba(220,232,239,0.75)}
-
-.closing{text-align:center;padding:3rem 0;margin-top:3rem;border-top:1px solid var(--glass-border)}
-.closing p{font-size:1.2rem;font-style:italic;line-height:2;color:rgba(220,232,239,0.65)}
-.closing .final{font-size:1.5rem;color:var(--foam);margin-top:1rem}
-
-.footer-text{text-align:center;margin-top:3rem;opacity:0.2;font-size:0.82rem;font-family:'DM Sans',sans-serif}
+footer{padding:3rem 6rem;text-align:center;position:relative;z-index:1;border-top:1px solid var(--glass-border)}
+.footer-text{font-family:'Crimson Pro',serif;font-size:0.85rem;color:var(--charcoal);opacity:0.5}
 
 @media(max-width:768px){
-  .content{padding:2rem 1.25rem}
-  .header{padding:5rem 0 2rem}
-  h1{font-size:2rem}
-  .opening p{font-size:1.15rem}
-  .sea-icon-wrap{width:46px;height:46px}
-  .sea-icon-wrap svg{width:20px;height:20px}
-  .sea-title{font-size:1.25rem}
-  .sea-content{padding:1.25rem}
-  .sea-content p{font-size:1rem}
-  .cycle-quote{font-size:1.3rem}
-  .back-link{top:1rem;left:1rem;padding:0.45rem 0.85rem}
-  .closing .final{font-size:1.2rem}
-  .waves{height:25vh}
+  nav{padding:1.25rem 2rem}
+  nav.scrolled{padding:0.85rem 2rem}
+  .content{padding:5rem 1.5rem 2rem}
+  .header{padding:2rem 0}
+  .poem p{font-size:1.05rem}
+  footer{padding:2rem}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
@@ -88,81 +57,73 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4rem);font-we
 </style>
 </head>
 <body>
-<div class="ocean-bg"></div>
-<div class="waves">
-<svg class="wave-svg" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,160 C360,280 720,0 1080,160 C1260,240 1350,200 1440,160 L1440,320 L0,320 Z" fill="rgba(26,74,110,0.3)"/></svg>
-<svg class="wave-svg" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,200 C240,120 480,280 720,200 C960,120 1200,280 1440,200 L1440,320 L0,320 Z" fill="rgba(26,74,110,0.25)"/></svg>
-<svg class="wave-svg" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,240 C180,180 360,300 540,240 C720,180 900,300 1080,240 C1260,180 1350,280 1440,240 L1440,320 L0,320 Z" fill="rgba(26,74,110,0.2)"/></svg>
-</div>
-<div class="bubbles" id="bubbles"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow"></div>
 
-<a href="./index.html" class="back-link">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back
-</a>
+<nav id="navbar">
+<a href="./index.html" class="nav-logo">M. A. Salehin</a>
+<a href="./index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>Back to Poems</a>
+</nav>
 
 <div class="content">
 <header class="header">
-<svg class="boat-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17c0 2 2 3 10 3s10-1 10-3"/><path d="M2 17c0-1 2-2 10-2s10 1 10 2"/><path d="M12 2v10"/><path d="M8 7l4-3 4 3"/></svg>
 <h1>Seas of Past</h1>
 <p class="subtitle">A reflection on time, age, and the ironic cycles of life</p>
 <p class="author-line">By Md Abu Salehin</p>
 </header>
 
-<div class="opening"><p>Time was the sea, life was the boat,</p><p>I was the passenger and the destination was past.</p></div>
+<div class="divider"><span class="divider-line"></span><span class="divider-dot"></span><span class="divider-line"></span></div>
 
-<section class="sea-section">
-<div class="sea-marker">
-<div class="sea-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-<div><div class="sea-title">The Sea of Old Age</div><div class="sea-subtitle">Where wisdom longs for innocence</div></div>
+<div class="poem">
+<p>Time was the sea, life was the boat,</p>
+<p>I was the passenger and the destination was past.</p>
+<div class="break"></div>
+
+<p>First, it was the sea of old age.</p>
+<p>I saw myself sitting on a chair</p>
+<p>And wishing to become a child again</p>
+<p>Where I don't have to work,</p>
+<p>don't have to think,</p>
+<p>Just do as I would like to.</p>
+<div class="break"></div>
+
+<p>Then the sea of youth came.</p>
+<p>I again saw myself with full of responsibilities.</p>
+<p>I was an adult but not as much as my father.</p>
+<p>I started to realize how my father lived.</p>
+<p>I had to take care of my family,</p>
+<p>Take care of myself.</p>
+<p>I just wanted to finish my duty and retire.</p>
+<div class="break"></div>
+
+<p>Then the last stop came, the sea of growing minds.</p>
+<p>I saw myself with a bright smile,</p>
+<p>Full of hope and fantasies in the eyes</p>
+<p>And just hoped to be an adult.</p>
+<div class="break"></div>
+
+<p>Like that the child thought,</p>
+<p class="em">"If I were to become an adult,<br>I would have everything to do.<br>No one would stop me, no restrictions."</p>
+<div class="break"></div>
+
+<p>The cycle of life is just like a joke</p>
+<p>That no one laughs at.</p>
+<div class="break"></div>
+
+<p>The older one becomes,</p>
+<p>The younger he wants to be.</p>
+<p>The younger he was,</p>
+<p>The older he wanted to be.</p>
 </div>
-<div class="sea-content"><p>I saw myself sitting on a chair</p><p>And wishing to become a child again</p><p>Where I don't have to work,</p><p>don't have to think,</p><p>Just do as I would like to.</p></div>
-</section>
-
-<section class="sea-section">
-<div class="sea-marker">
-<div class="sea-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-<div><div class="sea-title">The Sea of Youth</div><div class="sea-subtitle">Where responsibility weighs heavy</div></div>
 </div>
-<div class="sea-content"><p>I again saw myself with full of responsibilities.</p><p>I was an adult but not as much as my father.</p><p>I started to realize how my father lived.</p><p>I had to take care of my family,</p><p>Take care of myself.</p><p>I just wanted to finish my duty and retire.</p></div>
-</section>
 
-<section class="sea-section">
-<div class="sea-marker">
-<div class="sea-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4v1a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4z"/><path d="M18 21v-2a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v2"/></svg></div>
-<div><div class="sea-title">The Sea of Growing Minds</div><div class="sea-subtitle">Where hope meets impatience</div></div>
-</div>
-<div class="sea-content"><p>I saw myself with a bright smile,</p><p>Full of hope and fantasies in the eyes</p><p>And just hoped to be an adult.</p><p style="margin-top:1.5rem">Like that the child thought,</p><p>"If I were to become an adult,</p><p>I would have everything to do.</p><p>No one would stop me, no restrictions."</p></div>
-</section>
-
-<section class="cycle-section">
-<div class="cycle-quote">The cycle of life is just like a joke<br>That no one laughs at.</div>
-<div class="cycle-poem"><p>The older one becomes,</p><p>The younger he wants to be.</p><p style="margin-top:1.5rem">The younger he was,</p><p>The older he wanted to be.</p></div>
-</section>
-
-<div class="closing">
-<svg class="boat-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17c0 2 2 3 10 3s10-1 10-3"/><path d="M2 17c0-1 2-2 10-2s10 1 10 2"/><path d="M12 2v10"/><path d="M8 7l4-3 4 3"/></svg>
-<p style="margin-top:0.5rem">Time was the sea, life was the boat,</p><p>And the passenger finally understood&mdash;</p>
-<p class="final">The destination was always the past,</p><p class="final">but the journey was everything.</p>
-</div>
+<footer>
 <p class="footer-text">&copy; Md Abu Salehin. All rights reserved.</p>
-</div>
+</footer>
 
 <script>
-// Scroll reveal
-const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});
-document.querySelectorAll('.sea-section').forEach((s,i)=>{s.style.transitionDelay=(i*0.15)+'s';obs.observe(s)});
-
-// Bubbles
-const bc=document.getElementById('bubbles');
-for(let i=0;i<15;i++){
-  const b=document.createElement('div');b.className='bubble';
-  const s=Math.random()*25+8;
-  b.style.width=s+'px';b.style.height=s+'px';
-  b.style.left=Math.random()*100+'%';
-  b.style.animationDelay=Math.random()*15+'s';
-  b.style.animationDuration=(Math.random()*10+10)+'s';
-  bc.appendChild(b);
-}
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',scrollY>80)},{passive:true});
 </script>
 </body>
 </html>
